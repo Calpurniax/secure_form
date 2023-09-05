@@ -1,12 +1,16 @@
 import mongoose from "mongoose";
 
-const url='mongodb://localhost:27017/rovikrondb';
+const dbConnect = () => {
+  const user = 'sofia';
+  const pass = 'JXSk0CrWW98o3HxR';
+  const dbName = 'cluster0';
 
-export const connectDB= async ()=> {
-    try{
-       await mongoose.connect(url)
-       console.log('DB connected')
-    }catch(error){
-        console.log(error)
-    }    
+  const uri = `mongodb+srv://${user}:${pass}@${dbName}.gcyv8tr.mongodb.net/?retryWrites=true&w=majority`;
+
+  mongoose
+    .connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => console.log('conectado a MongoDB'))
+    .catch((e) => console.log('error de conexión', e));
 };
+export default dbConnect;
+
