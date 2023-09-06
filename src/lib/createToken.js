@@ -1,8 +1,7 @@
 import jwt from "jsonwebtoken";
+import {secretKey} from "../config.js"
 
-
-export function createAccessToken(payload){
-    const secretKey="tx9453)%";
+export function createLoginToken(payload){    
     return new Promise ((resolve, reject)=>{
         jwt.sign(        
             payload,        

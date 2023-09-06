@@ -1,6 +1,12 @@
 import User from "../models/UserModel.js";
 import bcrypt from "bcryptjs";
-import {createAccessToken} from "../lib/createToken.js";
+import {createLoginToken} from "../lib/createToken.js";
+
+//crear token solo al login
+//poner rol en la creacion del usuario y q sea parte del login
+//q solo se creen usuarios, no admin (mongoose) el admin se crea directamente en el compass
+//con bcrypt se puede encriptar la secret key del token y asi que sea más dificil desincriptar
+//llevarte la secret key fuera para reutilizarla cuando sea, será la misma para todos
 
 
 export const createUser = async(req,res)=>{
@@ -17,9 +23,7 @@ export const createUser = async(req,res)=>{
             username,
             password: scriptPassword
         })
-        await newUser.save()
-        const token = await createAccessToken({id:newUser._id})
-        res.cookie('token', token);
+        await newUser.save()        
         res.status(201).json({
             message:"user created",
             email,
