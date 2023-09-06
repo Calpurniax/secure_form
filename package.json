@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/Calpurniax/secure_form#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.0.0",
     "mongoose": "^7.5.0",
     "morgan": "^1.10.0"
