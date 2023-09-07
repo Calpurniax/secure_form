@@ -21,7 +21,8 @@ export const createUser = async(req,res)=>{
         const newUser = new User ({
             email,
             username,
-            password: scriptPassword
+            password: scriptPassword,
+            role:"user"
         })
         await newUser.save()        
         res.status(201).json({
