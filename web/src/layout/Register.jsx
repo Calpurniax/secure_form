@@ -7,12 +7,13 @@ import Button from "../components/Button";
 
 const Register = () => {
     const {register, handleSubmit} = useForm();
-    return (
-       <form className='form__register' onSubmit={handleSubmit(async(values)=>{
+    const onSubmit = handleSubmit(async(values)=>{
         console.log(values)
         const res = await registerUser(values)
         console.log(res)
-       })}>
+       })
+    return (
+       <form className='form__register' onSubmit={onSubmit}>
         <InputEmail
         cssStyle={'form__register__input'}
         labelText={'E-mail'}        

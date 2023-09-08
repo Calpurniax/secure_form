@@ -58,7 +58,7 @@ export const login = async(req,res)=>{
         res.status(201).json({
             message:"user log in",
             email,
-            nameFound: userFound.username            
+            name: userFound.username            
         })
     }catch(error){
         res.status(400).json({
