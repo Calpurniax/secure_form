@@ -4,7 +4,7 @@ import {authRequired} from "../middlewares/validateToken.js";
 
 const UserRouter=express.Router();
 
-UserRouter.post('/user', createUser)
+UserRouter.post('/register', createUser)
 UserRouter.post('/login', login)
 UserRouter.post('/logout', logout)
 

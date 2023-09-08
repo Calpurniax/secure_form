@@ -1,12 +1,18 @@
 import {useForm} from 'react-hook-form';
+import {registerUser} from '../services/auth'
 import InputUserName from "../components/InputUserName";
 import InputEmail from "../components/InputEmail";
 import InputPassword from "../components/InputPassword";
+import Button from "../components/Button";
 
 const Register = () => {
-    const {register} = useForm();
+    const {register, handleSubmit} = useForm();
     return (
-       <form className='form__register'>
+       <form className='form__register' onSubmit={handleSubmit(async(values)=>{
+        console.log(values)
+        const res = await registerUser(values)
+        console.log(res)
+       })}>
         <InputEmail
         cssStyle={'form__register__input'}
         labelText={'E-mail'}        
@@ -22,6 +28,8 @@ const Register = () => {
         labelText={'Password'}        
         id={'register_password'}        
         register={register}/>
+        <Button type={"submit"}
+        textValue={"Register"}/>
        </form>
     )
 }
