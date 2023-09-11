@@ -1,15 +1,15 @@
 import { useForm } from 'react-hook-form';
-import { login } from "../services/auth";
+
+import {useLoginContext} from "../context/LogInContext";
 import InputEmail from "../components/InputEmail";
 import InputPassword from "../components/InputPassword";
 import Button from "../components/Button";
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
+    const {logInContext} =useLoginContext;
     const onSubmit = handleSubmit(async (values) => {
-        console.log(values)
-        const res = await login(values)
-        console.log(res)
+        logInContext(values)        
     })
     return (
         <form className='form__login' onSubmit={onSubmit}>
