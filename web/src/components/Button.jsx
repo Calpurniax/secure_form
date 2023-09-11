@@ -1,6 +1,6 @@
-const Button =({type, textValue})=>{
+const Button =({type, textValue, disabled})=>{
     return (
-        <button type={type} >
+        <button type={type} disabled={disabled}>
                 {textValue}
         </button>
     )
