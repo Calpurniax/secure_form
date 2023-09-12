@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import {yupResolver} from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { sendMessage } from '../services/auth'
 import InputEmail from "../components/InputEmail"
 import InputText from "../components/InputText";
@@ -13,6 +15,18 @@ const ContactForm = () => {
     const [contactStatus, setContactStatus] = useState(null)
     const [captchaIsOK, setcaptchaIsOK] = useState(false)
 
+    const contactSchema = yup.object({
+        contact_email: yup
+        .string
+        .required("An e-mail is required")
+        .email("E-mail format is not valid"),
+        contact_name: yup.string.required("A name is required"),
+        contact_subject: yup.string.required("A subject is required"),
+        contact_message: yup.string.required("A message is required"),
+        contact_testInput1: yup.string,
+        contact_testInput2:yup.string,
+    })
+
     const { register, handleSubmit, reset, formState: {
         errors, dirtyFields
     } } = useForm({
@@ -23,9 +37,10 @@ const ContactForm = () => {
             contact_message: '',
             contact_testInput1: '',
             contact_testInput2: ''
-        }
-    });
-
+        },
+        resolver:yupResolver(contactSchema)
+    });    
+  
 
     const onSubmit = handleSubmit(async (message) => {
         if (dirtyFields.contact_testInput1 || dirtyFields.contact_testInput2) {

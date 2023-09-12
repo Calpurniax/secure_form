@@ -19,14 +19,14 @@ class CaptchaTest extends Component {
        if (validateCaptcha(user_captcha)===true) {
         this.props.setcaptchaIsOK(true)
         document.getElementById('user_captcha_input').value = "";  
-        responseSpan.innerHTML= 'Captcha is correct';       
+               
        }
 
        else {
         this.props.setcaptchaIsOK(false)
            alert('Captcha Does Not Match');
            document.getElementById('user_captcha_input').value = "";
-           responseSpan.innerHTML='Captcha is not correct';
+           responseSpan.innerText='Captcha is not correct';
        }
    };
 
