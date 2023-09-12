@@ -23,7 +23,7 @@ A MERN contact form and login without OWASP vulnerabilities
 - [] Validate hidden inputs are empty (return error 500)
 - [] Implement middleware to restrict number of calls
 ### CRUD
-- [] Token with encript user id and role, needs to has expires date
+- [] Token with encript user id and role, needs to has expire date
 - [x] Admin is unique and generate only in DB
 - [] Validate (with a middleware) the rol admin for manage Users
 - [] Validate the user has user rol to check the messages
