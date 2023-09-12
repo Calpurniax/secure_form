@@ -27,6 +27,6 @@ A MERN contact form and login without OWASP vulnerabilities
 - [x] Admin is unique and generate only in DB
 - [] Validate (with a middleware) the rol admin for manage Users
 - [] Validate the user has user rol to check the messages
-- [] All users has id, name and lastname, rol, email  and username
+- [x] All users has id, name and lastname, rol, email  and username
 - [x] Use hash for cypher the passwords
 - [] Apply middleware against brute force attack on login
