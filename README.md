@@ -13,7 +13,7 @@ A MERN contact form and login without OWASP vulnerabilities
 - [] Admin can CRUD the users
 - [x] User can check only his messages
 - [] Use protected Routes
-- [x]implement Auth Context
+- [x] Implement Auth Context
 
 ## Task for the back-end
 ### In the contact form
