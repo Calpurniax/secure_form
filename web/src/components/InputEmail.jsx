@@ -10,7 +10,11 @@ const InputEmail =({ cssStyle, labelText, id, register, errors})=>{
                 pattern:{
                     value:/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
                     message:"e-mail adress is not valid"
-                }
+                },
+                maxLength:{
+                    value:100,
+                    message:`This field should be less than 100 characters`
+                },
                 })}/>
             {errors[id] && (<p>{errors[id]?.message}</p>)}
         </div>

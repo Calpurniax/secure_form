@@ -1,14 +1,10 @@
 import "../styles/contactForm.scss";
-const HiddenInput =({value, id, handleTestInputs})=>{
+const HiddenInput = ({ id, register }) => {
 
-    const handleChange=(ev)=>{        
-        handleTestInputs(ev.target.value, ev.target.id)
-    }
-
-    return(
+    return (
         <div className="test">
             <label htmlFor="test">Información</label>
-            <input type="text"  id={id} value={value} onChange={handleChange}/>
+            <input type="text" id={id} {...register(id)} />
         </div>
     )
 }
