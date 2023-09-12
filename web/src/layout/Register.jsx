@@ -45,6 +45,7 @@ const Register = () => {
                 id={'register_password'}
                 register={register}
                 errors={errors} />
+                
             {registerError && (<p>{registerError}</p>)}
             <Button type={"submit"}
                 textValue={"Register"} />
