@@ -11,8 +11,8 @@ import {createLoginToken} from "../lib/createToken.js";
 
 export const createUser = async(req,res)=>{
     console.log(req.body)
-    const {email, username, password}=req.body
-    if(!email || !username || !password){
+    const {email, username, name, lastname,password}=req.body
+    if(!email || !username || !password ||!name || !lastname){
         return res.status(400).json({
             message:"All fields are required"
         })
@@ -21,6 +21,8 @@ export const createUser = async(req,res)=>{
         const newUser = new User ({
             email,
             username,
+            name,
+            lastname,
             password: scriptPassword,
             role:"user"
         })
@@ -28,7 +30,9 @@ export const createUser = async(req,res)=>{
         res.status(201).json({
             message:"user created",
             email,
-            username
+            username,
+            name, 
+            lastname
         })
     }catch(error){
         res.status(400).json({
@@ -53,7 +57,7 @@ export const login = async(req,res)=>{
         const passwordMatch= await bcrypt.compare(password, userFound.password)
         if(!passwordMatch) return res.status(400).json({
         message:"Credentials are not valid."})
-        const token = await createLoginToken({id:userFound._id})
+        const token = await createLoginToken({id:userFound._id, role:userFound.role})
         res.cookie("token", token)
         res.status(201).json({
             message:"user log in",

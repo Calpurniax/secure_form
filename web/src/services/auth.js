@@ -6,8 +6,11 @@ export const loginRequest = user => axios.post(`${API}/login`, { email: user.log
 
 export const registerUser = user => axios.post(`${API}/register`, {
     email: user.register_email,
-    username: user.register_name,
+    username: user.register_username,
+    name: user.register_name,
+    lastname:user.register_lastname,
     password: user.register_password
+   
 })
 
 export const sendMessage = message => axios.post(`${API}/form`, {

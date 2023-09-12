@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../services/auth'
-import InputUserName from "../components/InputText";
+import InputText from "../components/InputText";
 import InputEmail from "../components/InputEmail";
 import InputPassword from "../components/InputPassword";
 import Button from "../components/Button";
@@ -32,20 +32,33 @@ const Register = () => {
                 id={'register_email'}
                 register={register}
                 errors={errors} />
-            <InputUserName
+            <InputText
                 cssStyle={'form__register__input'}
-                labelText={'Name'}
-                id={'register_name'}
+                labelText={'User name'}
+                id={'register_username'}
                 register={register}
                 errors={errors}
-                placeholder='Dua Lipa' />
+                placeholder='Dua_Lipa99' />
             <InputPassword
                 cssStyle={'form__register__input'}
                 labelText={'Password'}
                 id={'register_password'}
                 register={register}
                 errors={errors} />
-                
+            <InputText
+                cssStyle={'form__register__input'}
+                labelText={'Name'}
+                id={'register_name'}
+                register={register}
+                errors={errors}
+                placeholder='Dua' />
+            <InputText
+                cssStyle={'form__register__input'}
+                labelText={'Last name'}
+                id={'register_lastname'}
+                register={register}
+                errors={errors}
+                placeholder='Lipa' />                
             {registerError && (<p>{registerError}</p>)}
             <Button type={"submit"}
                 textValue={"Register"} />
