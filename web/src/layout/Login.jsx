@@ -2,21 +2,14 @@ import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import {logInSchema} from "../schemas/userSchemas";
 import { useLoginContext } from '../context/LogInContext';
 import InputEmail from '../components/InputEmail';
 import InputPassword from '../components/InputPassword';
 import Button from '../components/Button';
 
 const Login = () => {
-  const navigate = useNavigate();
-
-  const logInSchema = yup.object({
-    login_email: yup.string
-      .required('An e-mail is required')
-      .email('E-mail format is not valid'),
-    login_password: yup.string.required('A password is required'),
-  });
+  const navigate = useNavigate();  
 
   const {
     register,

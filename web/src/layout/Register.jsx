@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { registerSchema } from "../schemas/userSchemas";
 import { registerUser } from '../services/auth'
 import InputText from "../components/InputText";
 import InputEmail from "../components/InputEmail";
@@ -12,19 +12,10 @@ import Button from "../components/Button";
 const Register = () => {
     const navigate = useNavigate();
     const [registerError, setRegisterError] = useState(null)
-    const registerSchema = yup.object({
-        register_email: yup
-        .string
-        .required("An e-mail is required")
-        .email("E-mail format is not valid"),
-        register_username: yup.string.required("An user name is required"),
-        register_password: yup.string.required("A password is required"),
-        register_name: yup.string.required("A name is required"),
-        register_lastname: yup.string.required("A last name is required"),
-    })
+
     const { register, handleSubmit, formState: {
         errors
-    } } = useForm({resolver: yupResolver(registerSchema)});
+    } } = useForm({ resolver: yupResolver(registerSchema) });
 
     const onSubmit = handleSubmit(async (values) => {
         try {
@@ -70,7 +61,7 @@ const Register = () => {
                 id={'register_lastname'}
                 register={register}
                 errors={errors}
-                placeholder='Lipa' />                
+                placeholder='Lipa' />
             {registerError && (<p>{registerError}</p>)}
             <Button type={"submit"}
                 textValue={"Register"} />
