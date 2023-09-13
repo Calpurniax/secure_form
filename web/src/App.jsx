@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from "./layout/Login"
 import Register from './layout/Register';
 import ContactForm from './layout/ContactForm';
+import Header from './components/Header';
 import './App.css'
 import { LogInProvider } from './context/LogInContext';
 
@@ -11,7 +12,7 @@ function App() {
   return (
     <LogInProvider>
       <BrowserRouter>
-        <p>app</p>
+        <Header/>
         <Routes>
           <Route path='/' element={<h1>Home</h1>} />
           <Route path='/login' element={<Login />} />

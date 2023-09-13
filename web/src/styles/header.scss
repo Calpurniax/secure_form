@@ -1,0 +1,12 @@
+.header{
+    &__list{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap:1rem;
+
+    &__element{
+        text-decoration:none;
+        }
+    }
+}
