@@ -3,11 +3,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { contactSchema } from "../schemas/formSchema";
 import { sendMessage } from '../services/auth'
-import InputEmail from "../components/InputEmail"
-import InputText from "../components/InputText";
-import InputName from '../components/InputName';
+import InputEmail from "../components/formComponents/InputEmail"
+import InputText from "../components/formComponents/InputText";
+import InputName from '../components/formComponents/InputName';
 import Button from "../components/Button";
-import HiddenInput from '../components/HiddenInput';
+import HiddenInput from '../components/formComponents/HiddenInput';
 import Captcha from '../components/Captcha';
 
 

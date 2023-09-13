@@ -1,5 +1,5 @@
-const InputText = ({ cssStyle, labelText, id, placeholder, register, errors, maxChar, pattern }) => {
-
+const InputText = ({ cssStyle, labelText, id, placeholder,register, errors, maxChar }) => {
+   
     return (
         <div className={cssStyle}>
             <label htmlFor={id}>{labelText}</label>

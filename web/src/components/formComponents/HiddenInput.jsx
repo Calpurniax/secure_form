@@ -1,4 +1,4 @@
-import "../styles/contactForm.scss";
+import "../../styles/contactForm.scss";
 const HiddenInput = ({ id, register }) => {
 
     return (

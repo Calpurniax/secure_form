@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {logInSchema} from "../schemas/userSchemas";
 import { useLoginContext } from '../context/LogInContext';
-import InputEmail from '../components/InputEmail';
-import InputPassword from '../components/InputPassword';
+import InputEmail from "../components/formComponents/InputEmail";
+import InputPassword from '../components/formComponents/InputPassword';
 import Button from '../components/Button';
 
 const Login = () => {
