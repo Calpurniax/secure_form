@@ -6,7 +6,7 @@ A MERN contact form and login without OWASP vulnerabilities
 - [x] Captcha
 - [x] 2 hidden inputs (they have to be empty to avoid bots)
 - [x] Max lenght for the inputs
-- [x] Validate the inputs to prevent XSS
+- [x] Validate the inputs to prevent XSS (yup and avoid innerHTML)
 ### Control Panel
 - [x] 2 types of user (admin and user)
 - [] Admin Route to the control panel
