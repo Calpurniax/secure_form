@@ -4,6 +4,7 @@ import cors from 'cors';
 import cookieParser from "cookie-parser";
 import FormRoutes from "./routes/FormRoutes.js"
 import UserRouter from "./routes/UserRoutes.js";
+import AuthRouter from "./routes/AuthRoutes.js";
 
 const app =express();
 app.use(cors({
@@ -16,5 +17,6 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 app.use('/api', FormRoutes);
 app.use('/api', UserRouter);
+app.use('/api', AuthRouter);
 
 export default app

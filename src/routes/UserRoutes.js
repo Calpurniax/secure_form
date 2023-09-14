@@ -1,13 +1,17 @@
 import express from "express";
-import {createUser, login, logout, profile} from "../controller/UserController.js";
-import {authRequired} from "../middlewares/validateToken.js";
+import * as userCrtl from "../controller/UserController.js";
+import { authRequired } from "../middlewares/validateToken.js";
+import { adminRequired } from "../middlewares/validateRole.js";
 
-const UserRouter=express.Router();
+const UserRouter = express.Router();
 
-UserRouter.post('/register', createUser)
-UserRouter.post('/login', login)
-UserRouter.post('/logout', logout)
 
-UserRouter.get('/profile',authRequired, profile)
+//AQUI LAS RUTAS SOLO ADMIN PARA CRUD DE USUARIOS
+
+UserRouter.post('/register', [authRequired, adminRequired], userCrtl.createUser)
+UserRouter.get('/register', [authRequired, adminRequired], userCrtl.getprofileByID)
+
+UserRouter.get('/profiles', [authRequired, adminRequired], userCrtl.getProfiles)
+
 
 export default UserRouter

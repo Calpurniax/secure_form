@@ -20,4 +20,4 @@ export const sendMessage = message => axios.post(`${API}/form`, {
     message:message.contact_message
 })
 
-export const getProfile = value => axios.get(`${API}/profile`,{value});
+export const getProfile = value => axios.get(`${API}/register`,{value});

@@ -20,7 +20,19 @@ export const createForm = async (req, res) => {
     }
 };
 
-export const getForm = async (req, res) => {
+export const getForms = async (req, res) => {
+    try {
+        const forms = await ContactForm.find()
+        if (!forms) return res.status(404).json({ message: "no messages" })
+        return res.status(200).json({ messages: forms })
+    } catch (error) {
+        res.status(400).json({ message: error.message })
+    }
+}
+
+
+//revisar esta funcion
+export const getFormByUser = async (req, res) => {
     try {
         const userFound = await User.findById(req.user)
         if (!userFound) return res.status(400).json({ message: "user not found" })

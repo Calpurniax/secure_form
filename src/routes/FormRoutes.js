@@ -1,10 +1,9 @@
 import express from 'express';
-import {createForm, getForm} from "../controller/FormController.js"
-import {authRequired} from "../middlewares/validateToken.js";
+import * as formCrtl from "../controller/FormController.js"
+import { authRequired } from "../middlewares/validateToken.js";
 
 const FormRouter = express.Router();
-FormRouter.post ('/form', createForm )
-FormRouter.get ('/form', authRequired, getForm)
-
+FormRouter.post('/form', formCrtl.createForm)
+FormRouter.get('/form', authRequired, formCrtl.getForms)
 
 export default FormRouter

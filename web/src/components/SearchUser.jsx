@@ -19,7 +19,7 @@ const GetProfile = () => {
         <form className='panel__search' onSubmit={onSubmit}>
             <InputText
                 cssStyle={'panel__search__input'}
-                labelText={'search an user'}
+                labelText={'search an user by ID'}
                 id={'searchUser'}
                 register={register}
                 errors={errors} />
