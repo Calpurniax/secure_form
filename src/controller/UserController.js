@@ -10,13 +10,15 @@ import bcrypt from "bcryptjs";
 
 
 export const createUser = async (req, res) => {
-    console.log(req.body)
     const { email, username, name, lastname, password } = req.body
     if (!email || !username || !password || !name || !lastname) {
         return res.status(400).json({
             message: "All fields are required"
         })
-    } try {
+
+    } const userExists = await User.findOne({ email })
+    if (userExists) return res.status(400).json({ message: "user already exists" })
+    try {
         const scriptPassword = await bcrypt.hash(password, 10);
         const newUser = new User({
             email,
@@ -41,13 +43,15 @@ export const createUser = async (req, res) => {
     }
 };
 
-export const getprofileByID = async (req, res) => {
-    const userFound = await User.findById(req.user)
+export const getprofileByMail = async (req, res) => {
+    const { email } = req.body
+    const userFound = await User.findOne({ email })
     if (!userFound) return res.status(400).json({ message: "user not found" })
 
     return res.json({
         email: userFound.email,
         name: userFound.username,
+        id: userFound._id,
         created: userFound.createdAt
     })
 }
@@ -62,27 +66,29 @@ export const getProfiles = async (req, res) => {
 }
 
 export const updateUser = async (req, res) => {
-    const { email, username, name, lastname, password, role } = req.body;
-    if (!email && !username && !name && !lastname && !password && !role) return res.status(400).json({ message: "New information is required"})
+    const { _id, email, username, name, lastname, password } = req.body;
+   
+    if (!email && !username && !name && !lastname && !password && !id) return res.status(400).json({ message: "New information is required" })
     try {
-        const userFound = await User.find({ email })
+        let userFound = await User.find( {_id} )
+        console.log(userFound)
         if (!userFound) res.status(404).json({ message: "user not found" })
-        const newForm = await User.findByIdAndUpdate(userFound._id, req.body, { new: true })
-        res.status(200).json(newForm)
+        const newData={$set: {name:name, email:email, username:username, lastname:lastname, password:password}}
+        await User.updateOne({_id}, newData, { new: true })       
+        res.status(200).json({ message: "update correct" })
 
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 }
 
-
-export const deleteUser = async (req, res) =>{
+export const deleteUser = async (req, res) => {
     try {
-        const {email} =req.body;
-        const userFound = await User.find({ email })
-        if(!userFound) res.status(404).json({ message: "Not user found with this email" });
-        const user = await User.deleteOne(userFound._id);         
-         res.status(200).json({ message: "User delete" });
+        const { _id } = req.body;
+        const userFound = await User.find({ _id })
+        if (!userFound) res.status(404).json({ message: "Not user found with this id" });
+        await User.deleteOne({_id});
+        res.status(200).json({ message: "User delete" });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

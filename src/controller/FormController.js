@@ -2,8 +2,9 @@ import ContactForm from "../models/FormModel.js";
 import User from "../models/UserModel.js";
 
 
+
 export const createForm = async (req, res) => {
-    console.log(req.body)
+    if(req.body.contact_testInput1 || req.body.contact_testInput2) res.status(500)
     const { email, name, subject, message } = req.body
     if (!email || !name || !subject || !message) {
         return res.status(400).json({
@@ -12,7 +13,7 @@ export const createForm = async (req, res) => {
     }
     try {
         const form = new ContactForm(req.body)
-        await form.save();
+        await form.save();       
         res.status(201).json(form)
 
     } catch (error) {

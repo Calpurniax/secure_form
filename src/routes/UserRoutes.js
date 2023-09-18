@@ -9,9 +9,10 @@ const UserRouter = express.Router();
 //AQUI LAS RUTAS SOLO ADMIN PARA CRUD DE USUARIOS
 
 UserRouter.post('/register', [authRequired, adminRequired], userCrtl.createUser)
-UserRouter.get('/register', [authRequired, adminRequired], userCrtl.getprofileByID)
+UserRouter.get('/register', [authRequired, adminRequired], userCrtl.getprofileByMail)
 
 UserRouter.get('/profiles', [authRequired, adminRequired], userCrtl.getProfiles)
-
+UserRouter.put('/profiles', [authRequired, adminRequired], userCrtl.updateUser)
+UserRouter.delete('/profiles', [authRequired, adminRequired], userCrtl.deleteUser)
 
 export default UserRouter
