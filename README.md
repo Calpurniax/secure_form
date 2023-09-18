@@ -17,11 +17,11 @@ A MERN contact form and login without OWASP vulnerabilities
 
 ## Task for the back-end
 ### In the contact form
-- [] Route and controller for saving the contact form data
-- [] ORM for the DB
+- [x] Route and controller for saving the contact form data
+- [x] ORM for the DB
 - [] Apply filters against XSS and SQLinjection
-- [] Validate hidden inputs are empty (return error 500)
-- [] Implement middleware to restrict number of calls
+- [x] Validate hidden inputs are empty (return error 500)
+- [x] Implement middleware to restrict number of calls (express-rate-limit)
 ### CRUD
 - [x] Token with encript user id and role, needs to has expire date
 - [x] Admin is unique and generate only in DB
@@ -29,4 +29,4 @@ A MERN contact form and login without OWASP vulnerabilities
 - [x] Validate the user has user rol to check the messages
 - [x] All users has id, name and lastname, rol, email  and username
 - [x] Use hash for cypher the passwords
-- [] Apply middleware against brute force attack on login
+- [x] Apply middleware against brute force attack on login (express-rate-limit)
