@@ -4,16 +4,19 @@ import User from "../models/UserModel.js";
 
 
 export const createForm = async (req, res) => {
-    if(req.body.contact_testInput1 || req.body.contact_testInput2) res.status(500)
+    if (req.body.contact_testInput1 || req.body.contact_testInput2) res.status(500)
     const { email, name, subject, message } = req.body
     if (!email || !name || !subject || !message) {
         return res.status(400).json({
             message: "All fields are required"
         })
     }
+    if (typeOf(email) !== String || typeOf(name) !== String || typeOf(subject) !== String || typeOf(message) !== String) return res.status(400).json({
+        message: "Information format is not valid"
+    })
     try {
         const form = new ContactForm(req.body)
-        await form.save();       
+        await form.save();
         res.status(201).json(form)
 
     } catch (error) {
