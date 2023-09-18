@@ -25,8 +25,8 @@ A MERN contact form and login without OWASP vulnerabilities
 ### CRUD
 - [x] Token with encript user id and role, needs to has expire date
 - [x] Admin is unique and generate only in DB
-- [] Validate (with a middleware) the rol admin for manage Users
-- [] Validate the user has user rol to check the messages
+- [x] Validate (with a middleware) the rol admin for manage Users
+- [x] Validate the user has user rol to check the messages
 - [x] All users has id, name and lastname, rol, email  and username
 - [x] Use hash for cypher the passwords
 - [] Apply middleware against brute force attack on login
