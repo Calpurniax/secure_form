@@ -2,14 +2,14 @@ import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {logInSchema} from "../schemas/userSchemas";
+import { logInSchema } from "../schemas/userSchemas";
 import { useLoginContext } from '../context/LogInContext';
 import InputEmail from "../components/formComponents/InputEmail";
 import InputPassword from '../components/formComponents/InputPassword';
 import Button from '../components/Button';
 
 const Login = () => {
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
 
   const {
     register,
@@ -17,15 +17,16 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(logInSchema) });
 
-  const { logInFunction, isLoggedIn, logInError } = useLoginContext();
-
+  const { logInFunction, isLoggedIn, logInError, user, isAdmin } = useLoginContext();
+  console.log(user)
   const onSubmit = handleSubmit((values) => {
     logInFunction(values);
   });
 
   useEffect(() => {
-    if (isLoggedIn) navigate('/');
-  }, [isLoggedIn]);
+    if (isAdmin) navigate('/panel')
+    if (isLoggedIn) navigate('/messages');
+  }, [isLoggedIn, isAdmin]);
 
   return (
     <form className='form__login' onSubmit={onSubmit}>

@@ -4,8 +4,11 @@ import Login from "./layout/Login";
 import ContactForm from './layout/ContactForm';
 import Header from './components/Header';
 import Panel from './layout/Panel';
+import Messages from './layout/Messages';
 import './App.css'
 import { LogInProvider } from './context/LogInContext';
+import ProtectedRoute from './routesComponent/ProtectedRoute';
+import AdminRoute from './routesComponent/AdminRoute';
 
 function App() {
 
@@ -17,8 +20,12 @@ function App() {
           <Route path='/' element={<h1>Home</h1>} />
           <Route path='/login' element={<Login />} />         
           <Route path='/contact' element={<ContactForm/>} />
-          <Route path='/messages' element={<h1>Messages</h1>} />
-          <Route path='/panel' element={<Panel/>} />
+          <Route element={<ProtectedRoute/>}>
+            <Route path='/messages' element={<Messages/>} />
+            <Route element={<AdminRoute/>}>
+              <Route path='/panel' element={<Panel/>} />
+            </Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </LogInProvider>

@@ -15,6 +15,9 @@ const Header = () => {
                     <li>
                         <Link className="header__list__element" to="/contact">Contact</Link>
                     </li>
+                    <li>
+                        <Link className="header__list__element" to="/messages">Messages</Link>
+                    </li>
                 </ul>
             </nav>
         </header>
