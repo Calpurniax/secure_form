@@ -41,50 +41,15 @@ export const logout = (req, res) => {
     return res.status(200).json({ message: "log out ok" })
 };
 
-export const checkLogin=async (req, res)=>{
-    console.log(req.cookies)
+export const checkLogin=async (req, res)=>{    
     const {token_rovikron}= req.cookies
     if(!token_rovikron) return res.status(401).json({message:"no authorization"})
-    const decodeToken = await checkToken(token_rovikron)
-    res.status(201).json({
-        user:{
-            email:decodeToken.email,
-            role:decodeToken.role,
-            username:decodeToken.username
-        }
+    const userFound = await checkToken(token_rovikron)   
+    res.status(201).json({       
+            email:userFound.email,
+            role:userFound.role,
+            username:userFound.username        
     })
 };
 
 
-
-    // jwt.verify(token_rovikron, secretKey, async (error, decodeToken)=>{
-    //     if(error) return res.status(498).json({message:"invalid token"}) 
-    //     const userFound=await User.findById(decodeToken.id)  
-    //     if(!userFound) return res.status(498).json({message:"invalid token"})   
-    //     res.status(201)
-    //.json({userFound})  
-        // return res.user= {
-        //     id:decodeToken.id,
-        //     role:decodeToken.role,
-        //     iat:decodeToken.iat,
-        //     exp:decodeToken.exp} 
-//          })
-        
-// }
-
-// export const authRequired = async (req,res, next)=>{   
-//     const {token_rovikron}= req.cookies
-//     console.log({token_rovikron})
-//     if(!token_rovikron) return res.status(401).json({message:"no authorization"})
-//     jwt.verify(token_rovikron, secretKey, async (error, decodeToken)=>{
-//         if(error) return res.status(498).json({message:"invalid token"}) 
-//         const userFound=await User.findById(decodeToken.id)  
-//         if(!userFound) return res.status(498).json({message:"invalid token"})     
-//         req.user= {
-//             id:decodeToken.id,
-//             role:decodeToken.role,
-//             iat:decodeToken.iat,
-//             exp:decodeToken.exp}       
-//         next();
-//     })    
-// }

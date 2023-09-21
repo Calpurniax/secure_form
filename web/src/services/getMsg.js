@@ -1,6 +1,5 @@
 import { messagesRequest } from './auth';
 
-
 export const getMessages = async () => {
     try {
         const response = await messagesRequest();

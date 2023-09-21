@@ -11,9 +11,7 @@ export const createForm = async (req, res) => {
             message: "All fields are required"
         })
     }
-    if (typeOf(email) !== String || typeOf(name) !== String || typeOf(subject) !== String || typeOf(message) !== String) return res.status(400).json({
-        message: "Information format is not valid"
-    })
+   
     try {
         const form = new ContactForm(req.body)
         await form.save();

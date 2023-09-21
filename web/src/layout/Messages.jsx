@@ -15,7 +15,7 @@ const Messages = () => {
     const renderMsg = () => {
         if (messages.length > 0) {
             return messages.map(eachMessage => {
-                return <MessageArticle eachMessage={eachMessage} />
+                return <MessageArticle eachMessage={eachMessage} key={eachMessage._id}/>
             })
         } else return <p>No hay mensajes</p>
     }

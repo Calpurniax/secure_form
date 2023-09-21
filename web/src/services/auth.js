@@ -12,7 +12,7 @@ export const registerUser = user => axios.post('/register', {
     lastname: user.register_lastname,
     password: user.register_password
 })
-export const getProfile = value => axios.get('/register', { value });
+export const userByIdRequest = id => axios.get('/register', { _id: id });
 
 export const sendMessage = message => axios.post('/form', {
     email: message.contact_email,
@@ -23,5 +23,6 @@ export const sendMessage = message => axios.post('/form', {
 
 export const messagesRequest = () => axios.get('/form')
 export const allUsersRequest = () => axios.get('/profiles')
+
 
 

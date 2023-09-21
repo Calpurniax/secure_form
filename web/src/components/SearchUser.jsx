@@ -1,7 +1,7 @@
 import InputText from "./formComponents/InputText";
 import Button from './Button';
 import { useForm } from 'react-hook-form';
-import {getProfile} from '../services/auth.js';
+import {userByIdRequest} from '../services/auth.js';
 
 const GetProfile = () => {
     const {
@@ -10,9 +10,8 @@ const GetProfile = () => {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = handleSubmit((values) => {
-        console.log(values)
-        getProfile(values)
+    const onSubmit = handleSubmit((values) => {        
+        userByIdRequest(values)
     });
 
     return (

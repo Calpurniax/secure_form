@@ -43,17 +43,18 @@ export const createUser = async (req, res) => {
     }
 };
 
-export const getprofileByMail = async (req, res) => {
-    const { email } = req.body
-    const userFound = await User.findOne({ email })
-    if (!userFound) return res.status(400).json({ message: "user not found" })
-
-    return res.json({
-        email: userFound.email,
-        name: userFound.username,
-        id: userFound._id,
-        created: userFound.createdAt
-    })
+export const getprofileById = async (req, res) => {
+    const id  = req.body
+    console.log(req.body)
+    if(!id) return res.status(400).json({ message: "missing data" })    
+    try{
+        const userFound = await User.findById(id)
+         console.log(userFound)
+         return res.status(200).json(userFound)
+    }
+      catch (error) {
+        res.status(400).json({ message: error.message })
+    }
 }
 
 export const getProfiles = async (req, res) => {

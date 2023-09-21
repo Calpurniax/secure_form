@@ -30,9 +30,11 @@ export const LogInProvider = ({ children }) => {
                 setLoading(false)
                 return
             }
+            console.log(res.data)
             setIsLoggedIn(true) 
             setUser(res.data)
             setLoading(false)
+            if(res.data.role==="admin")setIsAdmin(true)
 
         }catch(error){
             console.log(error)
@@ -56,38 +58,7 @@ export const LogInProvider = ({ children }) => {
         
     },[])
 
-    // useEffect(() => {
-    //     async function checkLogin() {            
-    //         const cookies = cookies.get()
-    //        // setCookieToken(cookies)
-    //         if (!cookies) {
-    //             setIsLoggedIn(false)
-    //             setUser(null)
-    //             setIsAdmin(false)
-    //             return
-    //         }
-    //         try {
-    //             setCookieToken(cookies)
-    //             const res = await verifyTokenRequest(cookieToken)
-    //             console.log(res)
-    //             if (res.status !== 201) {
-    //                 console.log("no autorizado")
-    //                 setIsLoggedIn(false) 
-    //                 setUser(null)
-    //                 return
-    //             } 
-    //             setIsLoggedIn(true)
-    //             setUser(res.data)
-    //         } catch (error) {
-    //             setIsLoggedIn(false)
-    //             setIsAdmin(false)
-    //             setUser(null)
-    //         }
-    //     }
-    //     checkLogin()
-    // }, [])
-
-    const logInFunction = async (user) => {
+     const logInFunction = async (user) => {
 
         try {
             const res = await loginRequest(user);

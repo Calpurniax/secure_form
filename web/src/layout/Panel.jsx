@@ -15,8 +15,7 @@ const Panel = () => {
 
     useEffect(() => {
         getUsers().then((response) => {
-            setAllUsers(response)
-            console.log(allUsers)
+            setAllUsers(response)           
         })
     }, [])
 
@@ -25,10 +24,14 @@ const Panel = () => {
         if (id === 'create') {
             setRenderCreate(!renderCreate)
             setRenderSearch(false)
-        } else if (id === 'search') {
+            setrenderAllUsers(false)
+        } else if (id === 'search') {            
             setRenderCreate(false)
             setRenderSearch(!renderSearch)
-        } else setrenderAllUsers(true)
+        } else {
+            const oldvalue=renderAllUsers
+            setrenderAllUsers(!oldvalue)
+        }
     }
 
     const renderViews = () => {
