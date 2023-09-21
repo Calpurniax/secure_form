@@ -1,7 +1,6 @@
 import express from "express";
 import * as authCrtl from "../controller/AuthController.js"
 import { limiterLogin } from "../middlewares/rateLimiter.js"
-import { authRequired } from "../middlewares/validateToken.js"
 
 const AuthRouter = express.Router();
 

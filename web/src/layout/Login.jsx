@@ -17,8 +17,8 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(logInSchema) });
 
-  const { logInFunction, isLoggedIn, logInError, user, isAdmin } = useLoginContext();
-  console.log(user)
+  const { logInFunction, isLoggedIn, logInError, isAdmin } = useLoginContext();
+  
   const onSubmit = handleSubmit((values) => {
     logInFunction(values);
   });
