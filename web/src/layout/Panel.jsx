@@ -1,22 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { getUsers } from '../services/getUsers';
 import FormNewUser from "../components/FormNewUser";
 import UserProfile from "../components/UserProfile";
 import SearchUser from '../components/SearchUser';
+import AllUsers from '../components/AllUsers';
 
 const Panel = () => {
 
     const [renderCreate, setRenderCreate] = useState(false);
     const [renderSearch, setRenderSearch] = useState(false);
+    const [renderAllUsers, setrenderAllUsers] = useState(false);
+
+    const [allUsers, setAllUsers] = useState([])
+
+    useEffect(() => {
+        getUsers().then((response) => {
+            setAllUsers(response)
+            console.log(allUsers)
+        })
+    }, [])
 
     const handleViews = (ev) => {
         const id = ev.target.id
         if (id === 'create') {
             setRenderCreate(!renderCreate)
             setRenderSearch(false)
-        } else {
+        } else if (id === 'search') {
             setRenderCreate(false)
             setRenderSearch(!renderSearch)
-        }
+        } else setrenderAllUsers(true)
     }
 
     const renderViews = () => {
@@ -34,13 +46,14 @@ const Panel = () => {
                 <ul onClick={handleViews}>
                     <li id="create">Create user</li>
                     <li id="search">Search user (no funciona aún)</li>
+                    <li id="allUsers">Show all users</li>
                 </ul>
                 <section>
                     {renderViews()}
                 </section>
             </section>
             <section>
-                <UserProfile />
+                {renderAllUsers ? <AllUsers allUsers={allUsers} /> : <UserProfile />}
             </section>
         </main>
     )

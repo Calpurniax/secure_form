@@ -11,8 +11,8 @@ export const registerUser = user => axios.post('/register', {
     name: user.register_name,
     lastname: user.register_lastname,
     password: user.register_password
-
 })
+export const getProfile = value => axios.get('/register', { value });
 
 export const sendMessage = message => axios.post('/form', {
     email: message.contact_email,
@@ -22,5 +22,6 @@ export const sendMessage = message => axios.post('/form', {
 })
 
 export const messagesRequest = () => axios.get('/form')
+export const allUsersRequest = () => axios.get('/profiles')
 
-export const getProfile = value => axios.get('/register', { value });
+

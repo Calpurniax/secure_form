@@ -19,7 +19,7 @@ const Messages = () => {
             })
         } else return <p>No hay mensajes</p>
     }
-    console.log(messages)
+    
     return (
         <main>
             <section>
