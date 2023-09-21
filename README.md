@@ -9,10 +9,10 @@ A MERN contact form and login without OWASP vulnerabilities
 - [x] Validate the inputs to prevent XSS (yup and avoid innerHTML)
 ### Control Panel
 - [x] 2 types of user (admin and user)
-- [] Admin Route to the control panel
+- [x] Admin Route to the control panel
 - [] Admin can CRUD the users
-- [x] User can check only his messages
-- [] Use protected Routes
+- [x] User can check only the messages
+- [x] Use protected Routes
 - [x] Implement Auth Context
 
 ## Task for the back-end
