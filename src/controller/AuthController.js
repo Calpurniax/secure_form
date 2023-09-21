@@ -42,7 +42,8 @@ export const logout = (req, res) => {
 };
 
 export const checkLogin=async (req, res)=>{
-    const {token_rovikron}= req.body
+    console.log(req.cookies)
+    const {token_rovikron}= req.cookies
     if(!token_rovikron) return res.status(401).json({message:"no authorization"})
     const decodeToken = await checkToken(token_rovikron)
     res.status(201).json({

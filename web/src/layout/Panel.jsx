@@ -33,7 +33,7 @@ const Panel = () => {
             <section>
                 <ul onClick={handleViews}>
                     <li id="create">Create user</li>
-                    <li id="search">Search user</li>
+                    <li id="search">Search user (no funciona aún)</li>
                 </ul>
                 <section>
                     {renderViews()}

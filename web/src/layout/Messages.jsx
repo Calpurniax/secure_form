@@ -1,6 +1,7 @@
 import { getMessages } from '../services/getMsg';
 import { useEffect, useState } from 'react';
 import MessageArticle from '../components/MessageArticle';
+
 const Messages = () => {
 
     const [messages, setMessages] = useState([])
@@ -10,12 +11,13 @@ const Messages = () => {
             setMessages(response)
         })
     }, [])
+
     const renderMsg = () => {
         if (messages.length > 0) {
             return messages.map(eachMessage => {
-                return <MessageArticle eachMessage={eachMessage}/>
+                return <MessageArticle eachMessage={eachMessage} />
             })
-        }
+        } else return <p>No hay mensajes</p>
     }
     console.log(messages)
     return (

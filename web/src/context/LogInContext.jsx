@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import cookies from 'js-cookie';
-import { loginRequest, verifyTokenRequest } from "../services/auth";
+import { loginRequest, logoutRequest, verifyTokenRequest } from "../services/auth";
 
 
 export const LogInContext = createContext();
@@ -18,27 +18,41 @@ export const LogInProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [logInError, setLogInError] = useState(null);
     const [cookieToken, setCookieToken] = useState (null)
+    const [loading, setLoading] = useState(true)
 
     async function checkLogin(){
         try{
             console.log('probando')
-            verifyTokenRequest(cookieToken)
+            const res = await verifyTokenRequest(cookieToken)
+            if(!res.data){
+                setIsLoggedIn(false) 
+                setUser(null)
+                setLoading(false)
+                return
+            }
+            setIsLoggedIn(true) 
+            setUser(res.data)
+            setLoading(false)
 
-        }catch(error){console.log(error)
-            
+        }catch(error){
+            console.log(error)
+            setIsLoggedIn(false) 
+            setUser(null)
+            setLoading(false)
         }
     }
 
     useEffect(()=>{
-        const token=cookies.get('token_rovikron')
+        const token=cookies.get()
         console.log(token)     
         if(!token){
             setIsLoggedIn(false)
             setUser(null)
+            setLoading(false)
             return
         } 
-        setCookieToken(token.token_rovikron)
-        checkLogin(cookieToken)
+        setCookieToken(token)
+        checkLogin()
         
     },[])
 
@@ -90,8 +104,22 @@ export const LogInProvider = ({ children }) => {
             console.log(error)
         }
     }
+    const logoutFunction = async (cookieToken)=>{
+        try {
+            const res = await logoutRequest(cookieToken);           
+            setIsAdmin(false)
+            setCookieToken(null)
+            setIsLoggedIn(false)
+            setUser(null)
+            return res
+
+        } catch (error) {
+            setLogInError(error.response.data.message)
+            console.log(error)
+        }
+    }
     return (
-        <LogInContext.Provider value={{ logInFunction, isLoggedIn, isAdmin, user, logInError }}>
+        <LogInContext.Provider value={{ logInFunction, logoutFunction, isLoggedIn, isAdmin, user, logInError, cookieToken, loading }}>
             {children}
         </LogInContext.Provider>
     )
