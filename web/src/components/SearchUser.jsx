@@ -1,17 +1,19 @@
 import InputText from "./formComponents/InputText";
 import Button from './Button';
 import { useForm } from 'react-hook-form';
-import {userByIdRequest} from '../services/auth.js';
+import { useProfileContext } from '../context/ProfileContext';
 
 const GetProfile = () => {
+    const { searchUser}= useProfileContext()
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
-    const onSubmit = handleSubmit((values) => {        
-        userByIdRequest(values)
+    const onSubmit = handleSubmit(async (values) => {       
+        const id = JSON.stringify(values.searchUser).replace(/['"]+/g, '')        
+        return await searchUser(id)
     });
 
     return (

@@ -61,8 +61,7 @@ export const LogInProvider = ({ children }) => {
      const logInFunction = async (user) => {
 
         try {
-            const res = await loginRequest(user);
-            console.log(res)
+            const res = await loginRequest(user);            
             if (res.data.role === "admin") {
                 setIsAdmin(true)
             }

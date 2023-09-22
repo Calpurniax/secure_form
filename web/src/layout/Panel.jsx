@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getUsers } from '../services/getUsers';
+
 import FormNewUser from "../components/FormNewUser";
 import UserProfile from "../components/UserProfile";
 import SearchUser from '../components/SearchUser';
@@ -48,7 +49,7 @@ const Panel = () => {
             <section>
                 <ul onClick={handleViews}>
                     <li id="create">Create user</li>
-                    <li id="search">Search user (no funciona aún)</li>
+                    <li id="search">Search user</li>
                     <li id="allUsers">Show all users</li>
                 </ul>
                 <section>

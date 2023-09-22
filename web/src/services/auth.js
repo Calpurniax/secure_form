@@ -12,7 +12,8 @@ export const registerUser = user => axios.post('/register', {
     lastname: user.register_lastname,
     password: user.register_password
 })
-export const userByIdRequest = id => axios.get('/register', { _id: id });
+
+export const userByIdRequest = id => axios.get(`/profile/${id}`);
 
 export const sendMessage = message => axios.post('/form', {
     email: message.contact_email,

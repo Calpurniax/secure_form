@@ -44,13 +44,12 @@ export const createUser = async (req, res) => {
 };
 
 export const getprofileById = async (req, res) => {
-    const id  = req.body
-    console.log(req.body)
+    const id  = req.params.id
+    console.log(req.params.id)
     if(!id) return res.status(400).json({ message: "missing data" })    
     try{
-        const userFound = await User.findById(id)
-         console.log(userFound)
-         return res.status(200).json(userFound)
+        const userFound = await User.findById(id)         
+        return res.status(200).json(userFound)
     }
       catch (error) {
         res.status(400).json({ message: error.message })
