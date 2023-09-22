@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import InputText from "./formComponents/InputText.jsx";
-import InputEmail from "./formComponents/InputEmail.jsx";
-import InputPassword from "./formComponents/InputPassword.jsx";
-import Button from "./Button.jsx";
-import { registerSchema } from "../schemas/userSchemas.jsx";
-import { registerUser } from '../services/auth'
+import InputText from "../formComponents/InputText.jsx";
+import InputEmail from "../formComponents/InputEmail.jsx";
+import InputPassword from "../formComponents/InputPassword.jsx";
+import Button from "../Button.jsx";
+import { registerSchema } from "../../schemas/userSchemas.jsx";
+import { registerUser } from '../../services/auth.js'
 
 
 const FormNewUser = () => {

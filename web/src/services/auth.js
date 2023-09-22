@@ -14,6 +14,7 @@ export const registerUser = user => axios.post('/register', {
 })
 
 export const userByIdRequest = id => axios.get(`/profile/${id}`);
+export const deleteUserRequest = id => axios.delete(`/profile/${id}`);
 
 export const sendMessage = message => axios.post('/form', {
     email: message.contact_email,

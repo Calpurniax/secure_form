@@ -17,51 +17,47 @@ export const LogInProvider = ({ children }) => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [user, setUser] = useState(null);
     const [logInError, setLogInError] = useState(null);
-    const [cookieToken, setCookieToken] = useState (null)
+    const [cookieToken, setCookieToken] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    async function checkLogin(){
-        try{
-            console.log('probando')
+    async function checkLogin() {
+        try {
             const res = await verifyTokenRequest(cookieToken)
-            if(!res.data){
-                setIsLoggedIn(false) 
+            if (!res.data) {
+                setIsLoggedIn(false)
                 setUser(null)
                 setLoading(false)
                 return
             }
             console.log(res.data)
-            setIsLoggedIn(true) 
+            setIsLoggedIn(true)
             setUser(res.data)
             setLoading(false)
-            if(res.data.role==="admin")setIsAdmin(true)
+            if (res.data.role === "admin") setIsAdmin(true)
 
-        }catch(error){
-            console.log(error)
-            setIsLoggedIn(false) 
+        } catch (error) {
+            setIsLoggedIn(false)
             setUser(null)
             setLoading(false)
         }
     }
 
-    useEffect(()=>{
-        const token=cookies.get()
-        console.log(token)     
-        if(!token){
+    useEffect(() => {
+        const token = cookies.get()
+        if (!token) {
             setIsLoggedIn(false)
             setUser(null)
             setLoading(false)
             return
-        } 
+        }
         setCookieToken(token)
         checkLogin()
-        
-    },[])
+    }, [])
 
-     const logInFunction = async (user) => {
+    const logInFunction = async (user) => {
 
         try {
-            const res = await loginRequest(user);            
+            const res = await loginRequest(user);
             if (res.data.role === "admin") {
                 setIsAdmin(true)
             }
@@ -74,9 +70,9 @@ export const LogInProvider = ({ children }) => {
             console.log(error)
         }
     }
-    const logoutFunction = async (cookieToken)=>{
+    const logoutFunction = async (cookieToken) => {
         try {
-            const res = await logoutRequest(cookieToken);           
+            const res = await logoutRequest(cookieToken);
             setIsAdmin(false)
             setCookieToken(null)
             setIsLoggedIn(false)

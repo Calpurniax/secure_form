@@ -1,5 +1,5 @@
-import User from "../models/UserModel.js";
-import bcrypt from "bcryptjs";
+import User from '../models/UserModel.js';
+import bcrypt from 'bcryptjs';
 
 
 //crear token solo al login
@@ -13,11 +13,11 @@ export const createUser = async (req, res) => {
     const { email, username, name, lastname, password } = req.body
     if (!email || !username || !password || !name || !lastname) {
         return res.status(400).json({
-            message: "All fields are required"
+            message: 'All fields are required'
         })
 
     } const userExists = await User.findOne({ email })
-    if (userExists) return res.status(400).json({ message: "user already exists" })
+    if (userExists) return res.status(400).json({ message: 'user already exists' })
     try {
         const scriptPassword = await bcrypt.hash(password, 10);
         const newUser = new User({
@@ -26,11 +26,11 @@ export const createUser = async (req, res) => {
             name,
             lastname,
             password: scriptPassword,
-            role: "user"
+            role: 'user'
         })
         await newUser.save()
         res.status(201).json({
-            message: "user created",
+            message: 'user created',
             email,
             username,
             name,
@@ -44,14 +44,14 @@ export const createUser = async (req, res) => {
 };
 
 export const getprofileById = async (req, res) => {
-    const id  = req.params.id
-    console.log(req.params.id)
-    if(!id) return res.status(400).json({ message: "missing data" })    
-    try{
-        const userFound = await User.findById(id)         
+    const id = req.params.id
+    if (!id) return res.status(400).json({ message: 'missing data' })
+    try {
+        const userFound = await User.findById(id)
+        if (!userFound) res.status(404).json({ message: 'user not found' })
         return res.status(200).json(userFound)
     }
-      catch (error) {
+    catch (error) {
         res.status(400).json({ message: error.message })
     }
 }
@@ -67,15 +67,15 @@ export const getProfiles = async (req, res) => {
 
 export const updateUser = async (req, res) => {
     const { _id, email, username, name, lastname, password } = req.body;
-   
+
     if (!email && !username && !name && !lastname && !password && !id) return res.status(400).json({ message: "New information is required" })
     try {
-        let userFound = await User.find( {_id} )
+        let userFound = await User.find({ _id })
         console.log(userFound)
-        if (!userFound) res.status(404).json({ message: "user not found" })
-        const newData={$set: {name:name, email:email, username:username, lastname:lastname, password:password}}
-        await User.updateOne({_id}, newData, { new: true })       
-        res.status(200).json({ message: "update correct" })
+        if (!userFound) res.status(404).json({ message: 'user not found' })
+        const newData = { $set: { name: name, email: email, username: username, lastname: lastname, password: password } }
+        await User.updateOne({ _id }, newData, { new: true })
+        res.status(200).json({ message: 'update correct' })
 
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -86,9 +86,9 @@ export const deleteUser = async (req, res) => {
     try {
         const { _id } = req.body;
         const userFound = await User.find({ _id })
-        if (!userFound) res.status(404).json({ message: "Not user found with this id" });
-        await User.deleteOne({_id});
-        res.status(200).json({ message: "User delete" });
+        if (!userFound) res.status(404).json({ message: 'Not user found with this id' });
+        await User.deleteOne({ _id });
+        res.status(200).json({ message: 'User delete' });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

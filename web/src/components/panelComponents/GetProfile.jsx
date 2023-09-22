@@ -1,19 +1,23 @@
-import InputText from "./formComponents/InputText";
-import Button from './Button';
+import InputText from "../formComponents/InputText";
+import Button from '../Button';
 import { useForm } from 'react-hook-form';
-import { useProfileContext } from '../context/ProfileContext';
+import { useProfileContext } from '../../context/ProfileContext';
 
 const GetProfile = () => {
     const { searchUser}= useProfileContext()
     const {
         register,
+        reset,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
     const onSubmit = handleSubmit(async (values) => {       
         const id = JSON.stringify(values.searchUser).replace(/['"]+/g, '')        
-        return await searchUser(id)
+        const res = await searchUser(id)         
+        if(res.status===200){
+            reset()
+        }
     });
 
     return (

@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useProfileContext } from '../context/ProfileContext';
+import { useProfileContext } from '../../context/ProfileContext';
 
 const UserProfile = () => {
     const { profile } = useProfileContext()
     const [renderProfile, setRenderProfile] = useState(false)
 
     const handleClick = (ev) => {
-        console.log(ev.target.id)
+        if(ev.target.id==='delete'){
+            console.log('borrar')
+        }
     }
     useEffect(() => {
         if (profile !== null) {
@@ -25,7 +27,7 @@ const UserProfile = () => {
                     {profile.name && <p>Name: {profile.name}</p>}
                     <div onClick={handleClick}>
                         <button id='edit'>Editar</button>
-                        <button id='erase'>Borrar</button>
+                        <button id='delete'>Borrar</button>
                     </div>
                 </article>
                 : <p>No hay usuario que mostrar</p>}
