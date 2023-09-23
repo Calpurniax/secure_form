@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getUsers } from '../services/getUsers';
+import { getUsers } from '../services/msgAndUsers';
 
 import FormNewUser from '../components/panelComponents/FormNewUser';
 import UserProfile from '../components/panelComponents/UserProfile';

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { contactSchema } from "../schemas/formSchema";
-import { sendMessage } from '../services/auth'
+import { sendMessage } from '../services/msgAndUsers'
 import InputEmail from "../components/formComponents/InputEmail"
 import InputText from "../components/formComponents/InputText";
 import InputName from '../components/formComponents/InputName';

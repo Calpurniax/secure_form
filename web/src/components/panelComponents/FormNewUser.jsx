@@ -6,7 +6,7 @@ import InputEmail from "../formComponents/InputEmail.jsx";
 import InputPassword from "../formComponents/InputPassword.jsx";
 import Button from "../Button.jsx";
 import { registerSchema } from "../../schemas/userSchemas.jsx";
-import { registerUser } from '../../services/auth.js'
+import { registerUser } from '../../services/msgAndUsers';
 
 
 const FormNewUser = () => {
