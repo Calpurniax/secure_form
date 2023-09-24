@@ -12,10 +12,9 @@ const Messages = () => {
   }, []);
 
   const handleDelete = (id) => {
-    const messagePosition = messages.findIndex((each) => each._id === id);
-    if (messagePosition === -1) return console.log('no messages');
+    const newArray = messages.filter((each) => each._id !== id);   
     deleteMessage(id);
-    return setMessages(messages.splice(messagePosition, 1));
+    return setMessages(newArray);
   };
 
   const renderMsg = () => {

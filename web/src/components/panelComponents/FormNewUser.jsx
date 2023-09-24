@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import InputText from "../formComponents/InputText.jsx";
 import InputEmail from "../formComponents/InputEmail.jsx";
 import InputPassword from "../formComponents/InputPassword.jsx";
-import Button from "../Button.jsx";
+import FormButton from "../FormButton.jsx";
 import { registerSchema } from "../../schemas/userSchemas.jsx";
 import { registerUser } from '../../services/msgAndUsers';
 
@@ -63,7 +63,7 @@ const FormNewUser = () => {
                 errors={errors}
                 placeholder='Lipa' />
             {registerStatus && (<p>{registerStatus}</p>)}
-            <Button type={"submit"}
+            <FormButton type={"submit"}
                 textValue={"Register"} />
         </form>
     )

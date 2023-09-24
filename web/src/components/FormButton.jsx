@@ -1,4 +1,4 @@
-const Button =({type, textValue, disabled})=>{
+const FormButton =({type, textValue, disabled})=>{
     return (
         <button type={type} disabled={disabled}>
                 {textValue}
@@ -6,4 +6,4 @@ const Button =({type, textValue, disabled})=>{
     )
 }
 
-export default Button
+export default FormButton

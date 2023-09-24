@@ -29,8 +29,7 @@ export const ProfileProvider = ({ children }) => {
 
     const deleteUser = async (id) => {
         try {            
-            const response = await deleteUserRequest(id)
-            
+            const response = await deleteUserRequest(id)            
             return response
         } catch (error) {
             console.log(error)

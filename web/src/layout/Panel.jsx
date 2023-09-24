@@ -57,7 +57,7 @@ const Panel = () => {
                 </section>
             </section>
             <section>
-                {renderAllUsers ? <AllUsers allUsers={allUsers} /> : <UserProfile />}
+                {renderAllUsers ? <AllUsers allUsers={allUsers} setAllUsers={setAllUsers}/> : <UserProfile />}
             </section>
         </main>
     )

@@ -1,5 +1,5 @@
 import InputText from "../formComponents/InputText";
-import Button from '../Button';
+import FormButton from '../FormButton';
 import { useForm } from 'react-hook-form';
 import { useProfileContext } from '../../context/ProfileContext';
 
@@ -28,7 +28,7 @@ const GetProfile = () => {
                 id={'searchUser'}
                 register={register}
                 errors={errors} />
-            <Button type={'submit'} textValue={'Search'} />
+            <FormButton type={'submit'} textValue={'Search'} />
         </form>
     )
 }

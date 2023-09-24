@@ -6,7 +6,7 @@ import { logInSchema } from "../schemas/userSchemas";
 import { useLoginContext } from '../context/LogInContext';
 import InputEmail from "../components/formComponents/InputEmail";
 import InputPassword from '../components/formComponents/InputPassword';
-import Button from '../components/Button';
+import FormButton from '../components/FormButton';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const Login = () => {
         errors={errors}
       />
       {logInError && <p>{logInError}</p>}
-      <Button type={'submit'} textValue={'Log in'} />
+      <FormButton type={'submit'} textValue={'Log in'} />
     </form>
   );
 };

@@ -6,7 +6,7 @@ import { sendMessage } from '../services/msgAndUsers'
 import InputEmail from "../components/formComponents/InputEmail"
 import InputText from "../components/formComponents/InputText";
 import InputName from '../components/formComponents/InputName';
-import Button from "../components/Button";
+import FormButton from "../components/FormButton";
 import HiddenInput from '../components/formComponents/HiddenInput';
 import Captcha from '../components/Captcha';
 
@@ -85,7 +85,7 @@ const ContactForm = () => {
                 {contactStatus && (<p>{contactStatus}</p>)}
                 {captchaIsOK ? <p>Captcha is correct</p> :
                     <Captcha setcaptchaIsOK={setcaptchaIsOK} />}
-                <Button type={"submit"}
+                <FormButton type={"submit"}
                     textValue={"Send Message"} disabled={!captchaIsOK} />
             </form>
         </section>

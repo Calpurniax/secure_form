@@ -1,9 +1,7 @@
-const MessageArticle =({eachMessage, handleDelete})=>{
+import ButtonFunctional from './ButtonFunctional'
 
-    const handleClick=(ev)=>{
-        const id= (ev.target.id)
-        handleDelete(id)
-    }
+const MessageArticle =({eachMessage, handleDelete})=>{
+  
     return(
         <li key={eachMessage._id} id={eachMessage._id}>
             <article >
@@ -11,10 +9,9 @@ const MessageArticle =({eachMessage, handleDelete})=>{
                 <p>From: {eachMessage.name}. Contact: {eachMessage.email}</p>
                 <p>Mensaje:</p>
                 <p>{eachMessage.message}</p>
-                <button id={eachMessage._id} onClick={handleClick}>Delete</button>
+                <ButtonFunctional id={eachMessage._id} handleDelete={handleDelete} textValue={'Delete'}/>
             </article>
         </li>
     )
 }
-
 export default MessageArticle
