@@ -1,4 +1,4 @@
-import { getMessages } from '../services/msgAndUsers';
+import { getMessages, deleteMessage} from '../services/msgAndUsers';
 import { useEffect, useState } from 'react';
 import MessageArticle from '../components/MessageArticle';
 
@@ -12,10 +12,14 @@ const Messages = () => {
         })
     }, [])
 
+    const handleDelete=(id)=>{        
+        deleteMessage(id)
+    }
+
     const renderMsg = () => {
         if (messages.length > 0) {
             return messages.map(eachMessage => {
-                return <MessageArticle eachMessage={eachMessage} key={eachMessage._id}/>
+                return <MessageArticle eachMessage={eachMessage} key={eachMessage._id} handleDelete={handleDelete}/>
             })
         } else return <p>No hay mensajes</p>
     }

@@ -11,7 +11,7 @@ export const createForm = async (req, res) => {
             message: "All fields are required"
         })
     }
-   
+
     try {
         const form = new ContactForm(req.body)
         await form.save();
@@ -43,5 +43,16 @@ export const getFormByUser = async (req, res) => {
         return res.status(200).json({ messages: forms })
     } catch (error) {
         res.status(400).json({ message: error.message })
+    }
+}
+
+export const deleteMessage = async (req, res) => {
+    try {
+        const id = req.params.id
+        const messageFound = await ContactForm.findByIdAndDelete({ _id: id })
+        if (!messageFound) res.status(404).json({ message: 'No message found' })
+        res.status(200).json({ message: 'Form deleted' })
+    } catch (error) {
+        res.status(400).json({ message: error.message });
     }
 }
