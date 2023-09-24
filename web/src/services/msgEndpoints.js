@@ -1,7 +1,7 @@
 import axios from './axios';
 
 export const messagesRequest = () => axios.get('/form')
-export const allUsersRequest = () => axios.get('/profiles')
+
 export const deleteMessageRequest = id => axios.delete(`/form/${id}`)
 
 export const sendMessage = message => axios.post('/form', {
@@ -11,23 +11,6 @@ export const sendMessage = message => axios.post('/form', {
     message: message.contact_message
 })
 
-export const registerUser = user => axios.post('/register', {
-    email: user.register_email,
-    username: user.register_username,
-    name: user.register_name,
-    lastname: user.register_lastname,
-    password: user.register_password
-})
-
-export const getUsers = async () => {
-    try {
-        const response = await allUsersRequest();
-        return response.data
-    } catch (error) {
-        console.log(error)
-        return error
-    }
-}
 
 export const getMessages = async () => {
     try {

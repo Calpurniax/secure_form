@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { registerUser } from '../services/msgAndUsers';
+import { registerUser } from '../services/profileEndpoints';
 import FormNewUser from '../components/FormNewUser';
 import { useForm } from 'react-hook-form';
 import { registerSchema } from '../schemas/userSchemas';

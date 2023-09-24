@@ -1,4 +1,4 @@
-import { getMessages, deleteMessage } from '../services/msgAndUsers';
+import { getMessages, deleteMessage } from '../services/msgEndpoints';
 import { useEffect, useState } from 'react';
 import MessageArticle from '../components/MessageArticle';
 
