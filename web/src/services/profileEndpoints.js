@@ -20,7 +20,12 @@ export const getUsers = async () => {
 }
 export const getUserbyId = id => axios.get(`/profile/${id}`);
 export const deleteUserRequest = id => axios.delete(`/profile/${id}`);
-
+export const updateUser = (user, id)=> axios.put(`/profile/${id}`, {
+    email: user.register_email,
+    username: user.register_username,
+    name: user.register_name,
+    lastname: user.register_lastname,    
+})
 
 
 

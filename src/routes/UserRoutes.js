@@ -12,9 +12,8 @@ UserRouter.post('/register', [authRequired, adminRequired], userCrtl.createUser)
 
 UserRouter.get('/profile/:id', [authRequired, adminRequired], userCrtl.getprofileById)
 UserRouter.delete('/profile/:id', [authRequired, adminRequired], userCrtl.deleteUser)
+UserRouter.put('/profile/:id', [authRequired, adminRequired], userCrtl.updateUser)
 
 UserRouter.get('/profiles', [authRequired, adminRequired], userCrtl.getProfiles)
-UserRouter.put('/profiles', [authRequired, adminRequired], userCrtl.updateUser)
-
 
 export default UserRouter

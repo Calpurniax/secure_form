@@ -11,6 +11,7 @@ import { LogInProvider } from './context/LogInContext';
 import { ProfileProvider } from './context/ProfileContext';
 import ProtectedRoute from './routesComponent/ProtectedRoute';
 import AdminRoute from './routesComponent/AdminRoute';
+import FormNewUser from './components/panelComponents/FormNewUser';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
               <Route path='/messages' element={<Messages />} />
               <Route element={<AdminRoute />}>
                 <Route path='/panel' element={<Panel />} />
+                <Route path='/panel/:id' element={<FormNewUser />} />
               </Route>
             </Route>
           </Routes>

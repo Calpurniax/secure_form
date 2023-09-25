@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getUsers } from '../services/msgEndpoints';
+import { getUsers } from '../services/profileEndpoints';
 
 import FormNewUser from '../components/panelComponents/FormNewUser';
 import UserProfile from '../components/panelComponents/UserProfile';
@@ -48,8 +48,8 @@ const Panel = () => {
         <main>
             <section>
                 <ul onClick={handleViews}>
-                    <li id="create">Create user</li>
-                    <li id="search">Search user</li>
+                    <li id="create">Create user</li>                   
+                    <li id="search">Search user</li>                    
                     <li id="allUsers">Show all users</li>
                 </ul>
                 <section>

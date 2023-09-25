@@ -66,16 +66,19 @@ export const getProfiles = async (req, res) => {
 }
 
 export const updateUser = async (req, res) => {
-    const { _id, email, username, name, lastname, password } = req.body;
-
-    if (!email && !username && !name && !lastname && !password && !id) return res.status(400).json({ message: "New information is required" })
+  
+    const id = req.params.id
+    console.log(id)
+    if (!id) return res.status(400).json({ message: 'An id is required' })    
+    const { email, username, name, lastname, password } = req.body;
+    if (!email && !username && !name && !lastname ) return res.status(400).json({ message: "New information is required" })
     try {
-        let userFound = await User.find({ _id })
-        console.log(userFound)
-        if (!userFound) res.status(404).json({ message: 'user not found' })
-        const newData = { $set: { name: name, email: email, username: username, lastname: lastname, password: password } }
-        await User.updateOne({ _id }, newData, { new: true })
-        res.status(200).json({ message: 'update correct' })
+        const userFound = await User.findOneAndUpdate(
+            {_id: id},
+            { email, username, name, lastname },
+            {new: true})        
+        if (!userFound) res.status(404).json({ message: 'User not found' })     
+        res.status(200).json({ message: 'Update correct' })
 
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -87,7 +90,7 @@ export const deleteUser = async (req, res) => {
         const id = req.params.id          
         const userFound = await User.findByIdAndDelete({_id: id})
         if (!userFound) res.status(404).json({ message: 'Not user found with this id' });  
-        res.status(200).json({ message: 'User deleted' });
+        res.status(204).json({ message: 'User deleted' });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
