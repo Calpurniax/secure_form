@@ -13,6 +13,7 @@ UserRouter.post('/register', [authRequired, adminRequired], userCrtl.createUser)
 UserRouter.get('/profile/:id', [authRequired, adminRequired], userCrtl.getprofileById)
 UserRouter.delete('/profile/:id', [authRequired, adminRequired], userCrtl.deleteUser)
 UserRouter.put('/profile/:id', [authRequired, adminRequired], userCrtl.updateUser)
+UserRouter.put('/password/:id', [authRequired, adminRequired], userCrtl.updatePassword)
 
 UserRouter.get('/profiles', [authRequired, adminRequired], userCrtl.getProfiles)
 

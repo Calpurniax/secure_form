@@ -44,7 +44,8 @@ export const logout = (req, res) => {
 export const checkLogin=async (req, res)=>{    
     const {token_rovikron}= req.cookies
     if(!token_rovikron) return res.status(401).json({message:"no authorization"})
-    const userFound = await checkToken(token_rovikron)   
+    const userFound = await checkToken(token_rovikron) 
+    if(!userFound) return res.status(401).json({message:"no authorization"})
     res.status(201).json({       
             email:userFound.email,
             role:userFound.role,

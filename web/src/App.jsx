@@ -12,6 +12,7 @@ import { ProfileProvider } from './context/ProfileContext';
 import ProtectedRoute from './routesComponent/ProtectedRoute';
 import AdminRoute from './routesComponent/AdminRoute';
 import FormNewUser from './components/panelComponents/FormNewUser';
+import InputPassword from './components/formComponents/InputPassword';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
               <Route element={<AdminRoute />}>
                 <Route path='/panel' element={<Panel />} />
                 <Route path='/panel/:id' element={<FormNewUser />} />
+                <Route path='/password/:id' element={<InputPassword />} />
               </Route>
             </Route>
           </Routes>

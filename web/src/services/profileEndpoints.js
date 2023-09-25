@@ -27,6 +27,9 @@ export const updateUser = (user, id)=> axios.put(`/profile/${id}`, {
     lastname: user.register_lastname,    
 })
 
+export const updatePasswordRequest = (id, user)=> axios.put(`/password/${id}`, {
+    password: user.password
+})
 
 
 

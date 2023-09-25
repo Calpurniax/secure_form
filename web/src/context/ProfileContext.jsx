@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react';
-import { getUserbyId, deleteUserRequest } from '../services/profileEndpoints';
+import { getUserbyId, deleteUserRequest, updatePasswordRequest } from '../services/profileEndpoints';
 
 export const ProfileContext = createContext();
 
@@ -36,9 +36,18 @@ export const ProfileProvider = ({ children }) => {
             return error
         }
     }
+    const updatePassword = async (id, values)=>{
+        try {
+            const response =await updatePasswordRequest (id, values)
+            return response
+        }catch(error){
+            console.log(error)
+            return error
+        }
+    }
 
     return (
-        <ProfileContext.Provider value={{ profile, setProfile, searchUser, deleteUser }}>
+        <ProfileContext.Provider value={{ profile, setProfile, searchUser, deleteUser, updatePassword }}>
             {children}
         </ProfileContext.Provider>
     )
