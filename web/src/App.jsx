@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from "./layout/Login";
 import ContactForm from './layout/ContactForm';
@@ -11,8 +10,8 @@ import { LogInProvider } from './context/LogInContext';
 import { ProfileProvider } from './context/ProfileContext';
 import ProtectedRoute from './routesComponent/ProtectedRoute';
 import AdminRoute from './routesComponent/AdminRoute';
-import FormNewUser from './components/panelComponents/FormNewUser';
-import InputPassword from './components/formComponents/InputPassword';
+import FormUpdateUser from './components/panelComponents/FormUpdateUser';
+
 
 
 function App() {
@@ -31,8 +30,7 @@ function App() {
               <Route path='/messages' element={<Messages />} />
               <Route element={<AdminRoute />}>
                 <Route path='/panel' element={<Panel />} />
-                <Route path='/panel/:id' element={<FormNewUser />} />
-                <Route path='/password/:id' element={<InputPassword />} />
+                <Route path='/panel/:id' element={<FormUpdateUser />} />                
               </Route>
             </Route>
           </Routes>

@@ -17,7 +17,7 @@ export const ProfileProvider = ({ children }) => {
         try {
             const res = await getUserbyId(id)
             if (res.status === 200) {
-                setProfile(res.data)
+                setProfile(res.data)               
                 return res
             }
         }
