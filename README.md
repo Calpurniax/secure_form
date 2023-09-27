@@ -10,7 +10,7 @@ A MERN contact form and login without OWASP vulnerabilities
 ### Control Panel
 - [x] 2 types of user (admin and user)
 - [x] Admin Route to the control panel
-- [] Admin can CRUD the users
+- [x] Admin can CRUD the users
 - [x] User can check only the messages
 - [x] Use protected Routes
 - [x] Implement Auth Context
