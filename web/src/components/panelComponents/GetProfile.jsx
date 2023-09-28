@@ -17,7 +17,7 @@ const GetProfile = () => {
     const id = JSON.stringify(values.searchUser).replace(/['"]+/g, '');   
     const res = await searchUser(id);
     if (res.status === 200) { 
-        console.log(res.data)    
+        console.log(res.data) 
         
         navigate(`/panel/${profile._id}`)
     }

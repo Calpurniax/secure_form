@@ -2,11 +2,8 @@ import User from '../models/UserModel.js';
 import bcrypt from 'bcryptjs';
 
 
-//crear token solo al login
-//poner rol en la creacion del usuario y q sea parte del login
-//q solo se creen usuarios, no admin (mongoose) el admin se crea directamente en el compass
 //con bcrypt se puede encriptar la secret key del token y asi que sea más dificil desincriptar
-//llevarte la secret key fuera para reutilizarla cuando sea, será la misma para todos
+
 
 
 export const createUser = async (req, res) => {
@@ -65,17 +62,19 @@ export const getProfiles = async (req, res) => {
     }
 }
 
-export const updateUser = async (req, res) => {
-
+export const updateUser = async (req, res) => {   
     const id = req.params.id
     if (!id) return res.status(400).json({ message: 'An id is required' })
-    const { email, username, name, lastname } = req.body;
-    if (!email && !username && !name && !lastname) return res.status(400).json({ message: "New information is required" })
-
+    const { email, username, name, lastname, password } = req.body;
+    if (!email && !username && !name && !lastname && !password) return res.status(400).json({ message: "New information is required" })
+    if (password) {
+        const scriptPassword = await bcrypt.hash(password, 10)
+        req.body.password =scriptPassword  
+    }
     try {
         const userFound = await User.findOneAndUpdate(
             { _id: id },
-            { email, username, name, lastname },
+            req.body,
             { new: true })
         if (!userFound) res.status(404).json({ message: 'User not found' })
         res.status(200).json({ message: 'Update correct' })
@@ -85,23 +84,6 @@ export const updateUser = async (req, res) => {
     }
 }
 
-export const updatePassword = async (req, res) => {
-    const id = req.params.id
-    const { password } = req.body;
-    if (!id || !password) return res.status(400).json({ message: 'Information missing' })
-    const scriptPassword = await bcrypt.hash(password, 10);
-    try {
-        const userFound = await User.findOneAndUpdate(
-            {_id:id},
-            {password: scriptPassword},
-            {new:true}
-        )
-        if (!userFound) res.status(404).json({ message: 'User not found' })
-        res.status(200).json({ message: 'Update correct' })
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-    }
-}
 
 export const deleteUser = async (req, res) => {
     try {
