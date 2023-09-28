@@ -23,9 +23,7 @@ export const deleteUserRequest = id => axios.delete(`/profile/${id}`);
 
 export const updateUserRequest = (user, id)=> axios.put(`/profile/${id}`, user)
 
-export const updatePasswordRequest = (id, user)=> axios.put(`/password/${id}`, {
-    password: user.password
-})
+
 
 
 

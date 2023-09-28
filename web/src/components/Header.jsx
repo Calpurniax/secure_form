@@ -3,8 +3,14 @@ import { Link } from 'react-router-dom';
 import { useLoginContext } from '../context/LogInContext';
 
 const Header = () => {
-    const { isAdmin, isLoggedIn } = useLoginContext();
-
+    const { isAdmin, isLoggedIn, user } = useLoginContext();
+   
+    const renderOwnProfile=()=>{
+        if(!isAdmin && isLoggedIn) return (
+        <li>
+            <Link className="header__list__element" to={ `/profile/${user.id}`}>Profile</Link>
+        </li>
+    )}
     return (
         <header className="header">
             <nav>
@@ -20,6 +26,9 @@ const Header = () => {
                             <li>
                                 <Link className="header__list__element" to="/login">Login</Link>
                             </li>
+                    }
+                     {
+                        renderOwnProfile()
                     }
                     <li>
                         <Link className="header__list__element" to="/contact">Contact</Link>

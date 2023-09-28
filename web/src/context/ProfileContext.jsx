@@ -1,8 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import {
   getUserbyId,
-  deleteUserRequest,
-  updatePasswordRequest,
+  deleteUserRequest,  
   updateUserRequest,
 } from '../services/profileEndpoints';
 
@@ -39,15 +38,7 @@ export const ProfileProvider = ({ children }) => {
       return error;
     }
   };
-  const updatePassword = async (id, values) => {
-    try {
-      const response = await updatePasswordRequest(id, values);
-      return response;
-    } catch (error) {
-      console.log(error);
-      return error;
-    }
-  };
+  
   const updateUser = async (user, id) => {    
     function checkUser(user) {
       for (var eachProp in user) {
@@ -73,8 +64,7 @@ export const ProfileProvider = ({ children }) => {
         profile,
         setProfile,
         searchUser,
-        deleteUser,
-        updatePassword,
+        deleteUser,       
         updateUser,
       }}
     >

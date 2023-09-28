@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import cookies from 'js-cookie';
 import { loginRequest, logoutRequest, verifyTokenRequest } from "../services/authEndpoints";
+import {updateUserRequest} from '../services/userEndpoints';
 
 
 export const LogInContext = createContext();
@@ -28,8 +29,7 @@ export const LogInProvider = ({ children }) => {
                 setUser(null)
                 setLoading(false)
                 return
-            }
-            console.log(res.data)
+            }           
             setIsLoggedIn(true)
             setUser(res.data)
             setLoading(false)
@@ -84,8 +84,17 @@ export const LogInProvider = ({ children }) => {
             console.log(error)
         }
     }
+    const updateOwnProfile = async (id, user)=>{
+        try{
+            const res = await updateUserRequest(user, id)
+            return res
+        } catch (error) {           
+            console.log(error)
+        }
+        
+    }
     return (
-        <LogInContext.Provider value={{ logInFunction, logoutFunction, isLoggedIn, isAdmin, user, logInError, cookieToken, loading }}>
+        <LogInContext.Provider value={{ logInFunction, updateOwnProfile, logoutFunction, isLoggedIn, isAdmin, user, logInError, cookieToken, loading }}>
             {children}
         </LogInContext.Provider>
     )

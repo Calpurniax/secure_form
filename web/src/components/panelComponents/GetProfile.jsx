@@ -5,7 +5,7 @@ import { useProfileContext } from '../../context/ProfileContext';
 import { useNavigate } from 'react-router-dom';
 
 const GetProfile = () => {
-  const { searchUser, profile, setProfile } = useProfileContext();
+  const { searchUser, profile } = useProfileContext();
   const navigate = useNavigate();
   const {
     register,   
@@ -16,9 +16,7 @@ const GetProfile = () => {
   const onSubmit = handleSubmit(async (values) => {      
     const id = JSON.stringify(values.searchUser).replace(/['"]+/g, '');   
     const res = await searchUser(id);
-    if (res.status === 200) { 
-        console.log(res.data) 
-        
+    if (res.status === 200) {               
         navigate(`/panel/${profile._id}`)
     }
   });

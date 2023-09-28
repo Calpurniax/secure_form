@@ -24,7 +24,8 @@ export const login = async (req, res) => {
         })
         const token = await createLoginToken({ id: userFound._id, role: userFound.role })
         res.cookie("token_rovikron", token)
-        res.status(201).json({           
+        res.status(201).json({    
+            id: userFound._id,       
             email: userFound.email,
             username: userFound.username,
             role:userFound.role
@@ -46,7 +47,8 @@ export const checkLogin=async (req, res)=>{
     if(!token_rovikron) return res.status(401).json({message:"no authorization"})
     const userFound = await checkToken(token_rovikron) 
     if(!userFound) return res.status(401).json({message:"no authorization"})
-    res.status(201).json({       
+    res.status(201).json({  
+            id: userFound._id,         
             email:userFound.email,
             role:userFound.role,
             username:userFound.username        
