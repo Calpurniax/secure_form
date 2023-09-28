@@ -85,11 +85,21 @@ export const LogInProvider = ({ children }) => {
         }
     }
     const updateOwnProfile = async (id, user)=>{
+        function checkUser(user) {
+            for (var eachProp in user) {
+              if (user[eachProp] === '') {
+                delete user[eachProp];
+              }
+            }
+            return user;
+          }
+          const cleanUser = checkUser(user);  
         try{
-            const res = await updateUserRequest(user, id)
+            const res = await updateUserRequest(cleanUser, id)
             return res
         } catch (error) {           
             console.log(error)
+            return error
         }
         
     }

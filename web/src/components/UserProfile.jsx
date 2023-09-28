@@ -1,4 +1,4 @@
-  import { useLoginContext } from '../context/LogInContext';
+import { useLoginContext } from '../context/LogInContext';
 import { useState, useEffect } from 'react';
 import ProfileArticle from './ProfileArticle';
 import { useForm } from 'react-hook-form';
