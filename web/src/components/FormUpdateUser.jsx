@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import FormButton from '../FormButton.jsx';
+import FormButton from './FormButton.jsx';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { updateSchema } from '../../schemas/userSchemas.jsx';
-import { useProfileContext } from '../../context/ProfileContext.jsx';
+import { updateSchema } from '../schemas/userSchemas.jsx';
+import { useProfileContext } from '../context/ProfileContext.jsx';
 import { useParams } from 'react-router-dom';
 
 const FormUpdateUser = () => {

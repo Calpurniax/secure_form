@@ -12,7 +12,7 @@ const Panel = () => {
 
   useEffect(() => {
     getUsers().then((response) => {
-      setAllUsers(response);
+      setAllUsers(response);     
     });
   }, []);
 

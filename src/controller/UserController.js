@@ -4,8 +4,6 @@ import bcrypt from 'bcryptjs';
 
 //con bcrypt se puede encriptar la secret key del token y asi que sea más dificil desincriptar
 
-
-
 export const createUser = async (req, res) => {
     const { email, username, name, lastname, password } = req.body
     if (!email || !username || !password || !name || !lastname) {
@@ -41,13 +39,19 @@ export const createUser = async (req, res) => {
 };
 
 export const getprofileById = async (req, res) => {
-    
+
     const id = req.params.id
     if (!id) return res.status(400).json({ message: 'missing data' })
     try {
         const userFound = await User.findById(id)
         if (!userFound) res.status(404).json({ message: 'user not found' })
-        return res.status(200).json(userFound)
+        return res.status(200).json({
+            email: userFound.email,
+            username: userFound.username,
+            name: userFound.name,
+            lastname: userFound.lastname,
+            id:userFound._id
+        })
     }
     catch (error) {
         res.status(400).json({ message: error.message })
@@ -57,21 +61,31 @@ export const getprofileById = async (req, res) => {
 export const getProfiles = async (req, res) => {
     try {
         const users = await User.find()
-        res.status(200).json(users)
+        const cleanUsers = users.map(each => {
+            return ({
+                id:each._id,
+                role: each.role,
+                email: each.email,
+                username: each.username,
+                name: each.name,
+                lastname: each.lastname
+            })
+        })
+        res.status(200).json(cleanUsers)
     } catch (error) {
         res.status(400).json({ message: error.message })
     }
 }
 
-export const updateUser = async (req, res) => {  
-    
+export const updateUser = async (req, res) => {
+
     const id = req.params.id
     if (!id) return res.status(400).json({ message: 'An id is required' })
     const { email, username, name, lastname, password } = req.body;
     if (!email && !username && !name && !lastname && !password) return res.status(400).json({ message: "New information is required" })
     if (password) {
         const scriptPassword = await bcrypt.hash(password, 10)
-        req.body.password =scriptPassword  
+        req.body.password = scriptPassword
     }
     try {
         const userFound = await User.findOneAndUpdate(

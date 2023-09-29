@@ -1,15 +1,17 @@
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { logInSchema } from "../schemas/userSchemas";
 import { useLoginContext } from '../context/LogInContext';
+import { useProfileContext } from '../context/ProfileContext';
 import InputEmail from "../components/formComponents/InputEmail";
 import InputPassword from '../components/formComponents/InputPassword';
 import FormButton from '../components/FormButton';
 
 const Login = () => {
-  const navigate = useNavigate();
+  
+  //const navigate = useNavigate();
 
   const {
     register,
@@ -17,16 +19,18 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(logInSchema) });
 
-  const { logInFunction, isLoggedIn, logInError, isAdmin } = useLoginContext();
-  
+  const { logInFunction, isLoggedIn, logInError, isAdmin, user } = useLoginContext();
+  const { setProfile } = useProfileContext();
   const onSubmit = handleSubmit((values) => {
     logInFunction(values);
   });
 
-  useEffect(() => {
-    if (isAdmin) navigate('/panel')
-    if (isLoggedIn) navigate('/messages');
-  }, [isLoggedIn, isAdmin]);
+  useEffect(() => {   
+    if(!isAdmin && isLoggedIn){
+      setProfile(user)
+    } 
+    //if (isLoggedIn) navigate('/messages');
+  }, [isLoggedIn]);
 
   return (
     <form className='form__login' onSubmit={onSubmit}>
