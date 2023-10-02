@@ -12,6 +12,10 @@ const InputText = ({ cssStyle, labelText, id, placeholder,register, errors, maxC
                     value: maxChar,
                     message: `This field should be less than ${maxChar} characters`
                 },
+                pattern: {
+                    value: /^[a-zA-Z]+$/,
+                    message: "Only letters are allowed for this field",
+                }
             })} />
             {errors[id] && (<p>{errors[id]?.message}</p>)}
         </div>

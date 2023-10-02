@@ -77,8 +77,7 @@ export const getProfiles = async (req, res) => {
     }
 }
 
-export const updateUser = async (req, res) => {
-
+export const updateUser = async (req, res) => {    
     const id = req.params.id
     if (!id) return res.status(400).json({ message: 'An id is required' })
     const { email, username, name, lastname, password } = req.body;
@@ -96,6 +95,7 @@ export const updateUser = async (req, res) => {
         res.status(200).json({ message: 'Update correct' })
 
     } catch (error) {
+        console.log(error)
         res.status(400).json({ message: error.message });
     }
 }

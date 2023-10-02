@@ -1,4 +1,3 @@
-import InputText from '../formComponents/InputText';
 import FormButton from '../FormButton';
 import { useForm } from 'react-hook-form';
 import { useProfileContext } from '../../context/ProfileContext';
@@ -13,12 +12,12 @@ const GetProfile = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = handleSubmit(async (values) => {
-    const id = JSON.stringify(values.searchUser).replace(/['"]+/g, '');
+  const onSubmit = handleSubmit(async (values) => {   
+    const id = JSON.stringify(values.searchUser).replace(/['"]+/g, '');   
     try {
       const res = await searchUser(id);
       if (res.status === 200) {
-        navigate(`/panel/${profile._id}`);
+        navigate(`/panel/${profile.id}`);
       }
     } catch (error) {
       console.log(error);
@@ -27,13 +26,14 @@ const GetProfile = () => {
 
   return (
     <form className='panel__search' onSubmit={onSubmit}>
-      <InputText
-        cssStyle={'panel__search__input'}
-        labelText={'search an user by ID'}
-        id={'searchUser'}
-        register={register}
-        errors={errors}
+      <label htmlFor='searchUser'> Search an user by ID </label>
+      <input
+        type='text'
+        id='searchUser'
+        className='panel__search__input'
+        {...register('searchUser', { required: true })}
       />
+      {errors.searchUser && <p>{errors.searchUser?.message}</p>}      
       <FormButton type={'submit'} textValue={'Search'} />
     </form>
   );

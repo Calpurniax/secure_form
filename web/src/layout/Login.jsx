@@ -1,8 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
-//import { useNavigate } from 'react-router-dom';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { logInSchema } from "../schemas/userSchemas";
+import { useNavigate } from 'react-router-dom';
 import { useLoginContext } from '../context/LogInContext';
 import { useProfileContext } from '../context/ProfileContext';
 import InputEmail from "../components/formComponents/InputEmail";
@@ -11,13 +9,13 @@ import FormButton from '../components/FormButton';
 
 const Login = () => {
   
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(logInSchema) });
+  } = useForm();
 
   const { logInFunction, isLoggedIn, logInError, isAdmin, user } = useLoginContext();
   const { setProfile } = useProfileContext();
@@ -29,7 +27,7 @@ const Login = () => {
     if(!isAdmin && isLoggedIn){
       setProfile(user)
     } 
-    //if (isLoggedIn) navigate('/messages');
+    if (isLoggedIn) navigate('/messages');
   }, [isLoggedIn]);
 
   return (

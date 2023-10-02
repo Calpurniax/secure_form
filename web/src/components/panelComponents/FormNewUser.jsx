@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import InputText from '../formComponents/InputText.jsx';
 import InputEmail from '../formComponents/InputEmail.jsx';
 import InputPassword from '../formComponents/InputPassword.jsx';
 import FormButton from '../FormButton.jsx';
-import { registerSchema } from '../../schemas/userSchemas.jsx';
 import { registerUser } from '../../services/profileEndpoints';
 
 const FormNewUser = () => {
@@ -15,7 +13,7 @@ const FormNewUser = () => {
     handleSubmit,
     reset,    
     formState: { errors },
-  } = useForm({ resolver: yupResolver(registerSchema) });
+  } = useForm();
 
   const onSubmit = handleSubmit(async (values) => {    
       try {
