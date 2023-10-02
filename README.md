@@ -19,7 +19,7 @@ A MERN contact form and login without OWASP vulnerabilities
 ### In the contact form
 - [x] Route and controller for saving the contact form data
 - [x] ORM for the DB
-- [] Apply filters against XSS and SQLinjection (validatorjs, CSP configuration)
+- [x] Apply filters against XSS and SQLinjection (validatorjs, CSP configuration)
 - [x] Validate hidden inputs are empty (return error 500)
 - [x] Implement middleware to restrict number of calls (express-rate-limit)
 ### CRUD
