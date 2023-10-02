@@ -32,12 +32,12 @@ const Messages = () => {
   };
 
   return (
-    <main>
+    <>
       <section>
         <h2>Messages</h2>
         <ul>{renderMsg()}</ul>
       </section>
-    </main>
+    </>
   );
 };
 export default Messages;

@@ -1,9 +1,11 @@
-const FormButton =({type, textValue, disabled})=>{
+const FormButton =({disabledStyle, activeStyle, type, textValue, disabled})=>{
+   
     return (
-        <button type={type} disabled={disabled}>
+        <button className={disabled?disabledStyle:activeStyle} type={type} disabled={disabled}>
                 {textValue}
         </button>
     )
 }
 
 export default FormButton
+

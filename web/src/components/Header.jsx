@@ -12,33 +12,31 @@ const Header = () => {
         </li>
     )}
     return (
-        <header className="header">
+        <header className="w-full p-4 mb-5 shadow-">
             <nav>
-                <ul className="header__list">
+                <ul className="flex flex-row justify-between">
                     <li>
-                        <Link className="header__list__element" to="/">Home</Link>
-                    </li>
-                    {
-                        isLoggedIn ?
-                            <li>
-                                <Link className="header__list__element" to="/logout">Logout</Link>
-                            </li> :
-                            <li>
-                                <Link className="header__list__element" to="/login">Login</Link>
-                            </li>
-                    }
-                     {
-                        renderOwnProfile()
-                    }
-                    <li>
-                        <Link className="header__list__element" to="/contact">Contact</Link>
-                    </li>
-                    {isLoggedIn && <li>
-                        <Link className="header__list__element" to="/messages">Messages</Link>
-                    </li>}
-                    {isAdmin && <li>
-                        <Link className="header__list__element" to="/panel" >Panel </Link>
-                    </li>}
+                        <Link className="" to="/">Home</Link>
+                    </li>                 
+                    <div className="flex flex-row gap-6">
+                        <li>
+                            <Link className="" to="/contact">Contact</Link>
+                        </li>
+                        {isLoggedIn && <li>
+                            <Link className="" to="/messages">Messages</Link>
+                        </li>}
+                        {isAdmin && <li>
+                            <Link className="" to="/panel" >Panel </Link>
+                        </li>}
+                        { isLoggedIn ?
+                        <li>
+                            <Link className="" to="/logout">Logout</Link>
+                        </li> :
+                        <li>
+                            <Link className="" to="/login">Login</Link>
+                        </li>}
+                        {renderOwnProfile()}
+                    </div>
                 </ul>
             </nav>
         </header>

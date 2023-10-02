@@ -35,7 +35,7 @@ const Panel = () => {
     }
   };
   return (
-    <main>
+    <>
       <section>
         <ul onClick={handleViews}>
           <li id='create'>Create user</li>
@@ -46,7 +46,7 @@ const Panel = () => {
       <section>
         {<AllUsers allUsers={allUsers} setAllUsers={setAllUsers} />}
       </section>
-    </main>
+    </>
   );
 };
 export default Panel;

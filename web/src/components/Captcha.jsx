@@ -30,7 +30,8 @@ class CaptchaTest extends Component {
 
     render() {
 
-        return (<div>
+        return (
+        <div>
             <div className="container">
                 <div className="form-group">
 

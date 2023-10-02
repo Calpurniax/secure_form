@@ -1,8 +1,8 @@
-const InputName =({ cssStyle, labelText, id, placeholder, register, errors, pattern })=>{
+const InputName =({ cssStyle, labelStyle,inputStyle, errorStyle, labelText, id, placeholder, register, errors })=>{
     return(
         <div className={cssStyle}>
-            <label htmlFor={id}>{labelText}</label>
-            <input type="text" name={id} id={id} placeholder={placeholder} {...register(id, {
+            <label htmlFor={id} className={labelStyle}>{labelText}</label>
+            <input type="text" className={inputStyle}name={id} id={id} placeholder={placeholder} {...register(id, {
                 required:{
                     value:true,
                     message:"This field is required"
@@ -16,7 +16,7 @@ const InputName =({ cssStyle, labelText, id, placeholder, register, errors, patt
                     message:"Name should contains only letters"
                 },
             })}/>
-            {errors[id] && (<p>{errors[id]?.message}</p>)}
+            {errors[id] && (<p className={errorStyle}>{errors[id]?.message}</p>)}
         </div>
     )
 }

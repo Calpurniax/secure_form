@@ -16,24 +16,29 @@ import FormUpdateUser from './components/FormUpdateUser';
 function App() {
 
   return (
+
     <LogInProvider>
       <ProfileProvider>
         <BrowserRouter>
-          <Header />
-          <Routes>
-            <Route path='/' element={<h1>Home</h1>} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/contact' element={<ContactForm />} />
-            <Route element={<ProtectedRoute />}>
-              <Route path='/logout' element={<Logout />} />
-              <Route path='/messages' element={<Messages />} />
-              <Route path='/profile/:id' element={<EditProfile/>}/>
-              <Route element={<AdminRoute />}>
-                <Route path='/panel' element={<Panel />} />
-                <Route path='/panel/:id' element={<FormUpdateUser />} />                
-              </Route>
-            </Route>
-          </Routes>
+          <body className='h-screen'>
+            <Header />
+            <main>
+              <Routes>
+                <Route path='/' element={<h1>Home</h1>} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/contact' element={<ContactForm />} />
+                <Route element={<ProtectedRoute />}>
+                  <Route path='/logout' element={<Logout />} />
+                  <Route path='/messages' element={<Messages />} />
+                  <Route path='/profile/:id' element={<EditProfile/>}/>
+                  <Route element={<AdminRoute />}>
+                    <Route path='/panel' element={<Panel />} />
+                    <Route path='/panel/:id' element={<FormUpdateUser />} />
+                  </Route>
+                </Route>
+              </Routes>
+            </main>
+          </body>
         </BrowserRouter>
       </ProfileProvider>
     </LogInProvider>
