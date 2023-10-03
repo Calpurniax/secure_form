@@ -8,13 +8,16 @@ const Messages = () => {
   useEffect(() => {
     getMessages().then((response) => {
       setMessages(response);
+      
     });
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {    
     const newArray = messages.filter((each) => each._id !== id);
-    deleteMessage(id);
-    return setMessages(newArray);
+    const response = await deleteMessage(id);
+    if(response.status===200){
+      setMessages(newArray);
+    }    
   };
 
   const renderMsg = () => {

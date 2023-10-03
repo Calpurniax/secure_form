@@ -1,22 +1,33 @@
-import ButtonFunctional from '../ButtonFunctional';
-import { useProfileContext } from '../../context/ProfileContext';
 import ProfileArticle from '../ProfileArticle';
+import { getUsers } from '../../services/profileEndpoints';
+import { useState, useEffect } from 'react';
+import { useProfileContext } from '../../context/ProfileContext';
 
-const AllUsers = ({ allUsers, setAllUsers }) => {
+const AllUsers = () => {  
+   
+  const [allUsers, setAllUsers] = useState([]);
   const { deleteUser } = useProfileContext();
 
-  const handleDelete = (id) => {
+  useEffect(() => {
+    getUsers().then((response) => {
+      setAllUsers(response);     
+    });
+  }, []);
+
+  const handleDelete = async (id) => {
     const newArray = allUsers.filter((each) => each._id !== id);
-    deleteUser(id);
-    setAllUsers(newArray);
+    const response = await deleteUser(id);
+    if (response.status === 200) {
+      setAllUsers(newArray);
+    }
   };
+
   const renderUsers = () => {
     if (allUsers.length > 0) {
       return allUsers.map((eachUser) => {
         return (
           <li key={eachUser.id}>
             <ProfileArticle user={eachUser} handleDelete={handleDelete} />
-            
           </li>
         );
       });

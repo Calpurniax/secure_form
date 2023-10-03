@@ -1,20 +1,16 @@
-import { useState, useEffect } from 'react';
-import { getUsers } from '../services/profileEndpoints';
+import { useState } from 'react';
+
 import FormNewUser from '../components/panelComponents/FormNewUser';
 import GetProfile from '../components/panelComponents/GetProfile';
 import AllUsers from '../components/panelComponents/AllUsers';
+
 
 const Panel = () => {
   const [renderCreate, setRenderCreate] = useState(false);
   const [renderSearch, setRenderSearch] = useState(false);
 
-  const [allUsers, setAllUsers] = useState([]);
 
-  useEffect(() => {
-    getUsers().then((response) => {
-      setAllUsers(response);     
-    });
-  }, []);
+  
 
   const handleViews = (ev) => {
     const id = ev.target.id;
@@ -44,7 +40,7 @@ const Panel = () => {
         <section >{renderViews()}</section>
       </section>
       <section className='ml-5'>
-        {<AllUsers allUsers={allUsers} setAllUsers={setAllUsers} />}
+        {<AllUsers />}
       </section>
     </>
   );

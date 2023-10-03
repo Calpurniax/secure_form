@@ -1,7 +1,6 @@
 const FormButton =({type, textValue, id, handleDelete})=>{
     
-    const handleClick=(ev)=>{
-        console.log(ev.target.id)
+    const handleClick=(ev)=>{       
         const id= (ev.target.id)
         handleDelete(id)
     }
