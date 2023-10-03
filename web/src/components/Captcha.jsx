@@ -33,21 +33,24 @@ class CaptchaTest extends Component {
         return (
         <div>
             <div className="container">
-                <div className="form-group">
+                <div className="form-group flex flex-col items-center">
 
-                    <div className="col mt-3">
+                    <div className="flex flex-row justify-end justify-items-end mt-3 gap-4">
                         <LoadCanvasTemplate />
+                        <input className='w-36 h-auto' placeholder="Enter Captcha " id="user_captcha_input" name="user_captcha_input" type="text"></input>
+                            <span id='error'></span>
                     </div>
 
                     <div className="col mt-3">
                         <div>
-                            <input placeholder="Enter Captcha Value" id="user_captcha_input" name="user_captcha_input" type="text"></input>
-                            <span id='error'></span>
+                            
                         </div>
                     </div>
 
                     <div className="col mt-3">
-                        <div><button className="btn btn-primary bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-100" onClick={() => this.doSubmit()}>Submit Captcha</button></div>
+                        <div className='flex flex-col justify-center'>
+                            <button className="btn btn-primary bg-amber-500 text-white font-bold py-2 px-3 rounded opacity-100 w-36" onClick={() => this.doSubmit()}>Submit Captcha</button>
+                        </div>
                     </div>
 
                 </div>
