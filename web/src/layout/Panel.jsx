@@ -36,14 +36,14 @@ const Panel = () => {
   };
   return (
     <>
-      <section>
-        <ul onClick={handleViews}>
-          <li id='create'>Create user</li>
-          <li id='search'>Search user for update</li>
+      <section className='mt-12'>
+        <ul onClick={handleViews} className='flex flex-row justify-around my-8'>
+          <li className='hover:cursor-pointer bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-100 w-1/4 mb-6' id='create'>Create user</li>
+          <li className='hover:cursor-pointer bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-100 w-1/4 mb-6' id='search'>Search user for update</li>
         </ul>
-        <section>{renderViews()}</section>
+        <section >{renderViews()}</section>
       </section>
-      <section>
+      <section className='ml-5'>
         {<AllUsers allUsers={allUsers} setAllUsers={setAllUsers} />}
       </section>
     </>

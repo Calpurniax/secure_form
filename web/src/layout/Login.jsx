@@ -31,24 +31,32 @@ const Login = () => {
   }, [isLoggedIn]);
 
   return (
-    <form className='form__login' onSubmit={onSubmit}>
-      <InputEmail
-        cssStyle={'form__login__input'}
-        labelText={'E-mail'}
-        id={'login_email'}
-        register={register}
-        errors={errors}
-      />
-      <InputPassword
-        cssStyle={'form__login__input'}
-        labelText={'Password'}
-        id={'login_password'}
-        register={register}
-        errors={errors}
-      />
-      {logInError && <p>{logInError}</p>}
-      <FormButton type={'submit'} textValue={'Log in'} />
-    </form>
+    <div  className='flex flex-col items-center justify-center'>
+      <form className='flex flex-col items-center justify-center w-2/5 p-3 bg-zinc-200' onSubmit={onSubmit}>
+        <InputEmail
+          cssStyle='w-full px-3'
+          labelStyle='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
+          inputStyle='appearance-none block w-full text-gray-700 py-2 px-4 mb-3 leading-tight'
+          errorStyle='text-red-500 text-xs italic mb-3'
+          labelText='E-mail'
+          id='login_email'
+          register={register}
+          errors={errors}
+        />
+        <InputPassword
+          cssStyle='w-full px-3'
+          labelStyle='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
+          inputStyle='appearance-none block w-full text-gray-700 py-2 px-4 mb-3 leading-tight'
+          errorStyle='text-red-500 text-xs italic mb-3'
+          labelText='Password'
+          id='login_password'
+          register={register}
+          errors={errors}
+        />
+        {logInError && <p>{logInError}</p>}
+        <FormButton type={'submit'} textValue={'Log in'} activeStyle='bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-100'/>
+      </form>
+    </div>
   );
 };
 export default Login;

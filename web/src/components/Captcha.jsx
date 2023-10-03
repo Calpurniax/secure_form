@@ -47,7 +47,7 @@ class CaptchaTest extends Component {
                     </div>
 
                     <div className="col mt-3">
-                        <div><button className="btn btn-primary" onClick={() => this.doSubmit()}>Submit Captcha</button></div>
+                        <div><button className="btn btn-primary bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-100" onClick={() => this.doSubmit()}>Submit Captcha</button></div>
                     </div>
 
                 </div>

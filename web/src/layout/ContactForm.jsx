@@ -51,7 +51,7 @@ const ContactForm = () => {
 
   return (
     <section className='flex flex-col items-center justify-center'>
-      <h2 className='mb-6 text-xl '>Tell us what is on your mind</h2>
+      <h2 className='mb-6 text-xl'>Tell us what is on your mind</h2>
       <form className='w-4/5 p-3 bg-zinc-200' onSubmit={onSubmit}>
         <div className='flex flex-wrap -mx-3 mb-6'>
           <InputEmail
@@ -128,19 +128,20 @@ const ContactForm = () => {
         <HiddenInput id='contact_testInput1' register={register} />
         <HiddenInput id='contact_testInput2' register={register} />
         {contactStatus && <p className='mb-3'>{contactStatus}</p>}
-        {captchaIsOK ? (
-          <p>Captcha is correct</p>
-        ) : (
-          <Captcha setcaptchaIsOK={setcaptchaIsOK} />
-        )}
-        <FormButton
-            disabledStyle='bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed'
-            activeStyle='bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-100'
-
-          type={'submit'}
-          textValue={'Send Message'}
-          disabled={!captchaIsOK}
-        />
+        <div className='flex flex-row justify-between mb-6 items-end'>
+          {captchaIsOK ? (
+            <p>Captcha is correct</p>
+          ) : (
+            <Captcha setcaptchaIsOK={setcaptchaIsOK} />
+          )}
+          <FormButton
+              disabledStyle='bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed'
+              activeStyle='bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-100'
+            type={'submit'}
+            textValue={'Send Message'}
+            disabled={!captchaIsOK}
+          />
+        </div>
       </form>
     </section>
   );

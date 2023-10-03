@@ -1,4 +1,4 @@
-import "../styles/header.scss";
+
 import { Link } from 'react-router-dom';
 import { useLoginContext } from '../context/LogInContext';
 
@@ -12,7 +12,7 @@ const Header = () => {
         </li>
     )}
     return (
-        <header className="w-full p-4 mb-5 shadow-">
+        <header className="w-full p-4 mb-5 shadow-md">
             <nav>
                 <ul className="flex flex-row justify-between">
                     <li>

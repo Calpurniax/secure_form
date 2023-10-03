@@ -4,11 +4,12 @@ const MessageArticle =({eachMessage, handleDelete})=>{
   
     return(
         <li key={eachMessage._id} id={eachMessage._id}>
-            <article >
-                <h2>{eachMessage.subject}</h2>
-                <p>From: {eachMessage.name}. Contact: {eachMessage.email}</p>
-                <p>Mensaje:</p>
-                <p>{eachMessage.message}</p>
+            <article className='border border-gray-200 p-3 w-64 shadow'>
+                <h3 className='mb-2 text-lg font-bold'>{eachMessage.subject}</h3>
+                <p><span className='italic'>From:</span> {eachMessage.name} </p>
+                <p><span className='italic'>Contact:</span> {eachMessage.email}</p>
+                <p> <span className='italic'>Mensaje:</span></p>
+                <p className='mb-4'>{eachMessage.message}</p>
                 <ButtonFunctional id={eachMessage._id} handleDelete={handleDelete} textValue={'Delete'}/>
             </article>
         </li>

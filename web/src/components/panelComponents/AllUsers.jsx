@@ -15,12 +15,8 @@ const AllUsers = ({ allUsers, setAllUsers }) => {
       return allUsers.map((eachUser) => {
         return (
           <li key={eachUser.id}>
-            <ProfileArticle user={eachUser} />
-            <ButtonFunctional
-              id={eachUser._id}
-              handleDelete={handleDelete}
-              textValue={'Delete'}
-            />
+            <ProfileArticle user={eachUser} handleDelete={handleDelete} />
+            
           </li>
         );
       });
@@ -28,10 +24,12 @@ const AllUsers = ({ allUsers, setAllUsers }) => {
   };
 
   return (
-    <>
-      <h2>Users</h2>
-      <ul>{renderUsers()}</ul>
-    </>
+    <div className='flex flex-col justify-center items-center'>
+      <h2 className='my-6 text-2xl'>Users</h2>
+      <div className='w-11/12'>
+        <ul className='flex justify-start flex-wrap gap-6'>{renderUsers()}</ul>
+      </div>
+    </div>
   );
 };
 export default AllUsers;

@@ -1,11 +1,12 @@
 const FormButton =({type, textValue, id, handleDelete})=>{
     
     const handleClick=(ev)=>{
+        console.log(ev.target.id)
         const id= (ev.target.id)
         handleDelete(id)
     }
     return (
-        <button type={type} onClick={handleClick} id={id}>
+        <button type={type} className='bg-red-500 text-white font-bold py-2 px-4 rounded opacity-100' onClick={handleClick} id={id}>
                 {textValue}
         </button>
     )

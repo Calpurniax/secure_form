@@ -25,17 +25,21 @@ const GetProfile = () => {
   });
 
   return (
-    <form className='panel__search' onSubmit={onSubmit}>
-      <label htmlFor='searchUser'> Search an user by ID </label>
-      <input
-        type='text'
-        id='searchUser'
-        className='panel__search__input'
-        {...register('searchUser', { required: true })}
-      />
-      {errors.searchUser && <p>{errors.searchUser?.message}</p>}      
-      <FormButton type={'submit'} textValue={'Search'} />
-    </form>
+    <div className='flex flex-col items-center justify-center'>
+      <form className='w-2/5 p-3 bg-zinc-200' onSubmit={onSubmit}>
+        <label htmlFor='searchUser' className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>
+        Search an user by ID
+        </label>
+        <input
+          type='text'
+          id='searchUser'
+          className='appearance-none block w-full text-gray-700 py-2 px-4 mb-6 leading-tight'
+          {...register('searchUser', { required: true })}
+        />
+        {errors.searchUser && <p>{errors.searchUser?.message}</p>}
+        <FormButton type={'submit'} textValue={'Search'} activeStyle='bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-100 mb-3'/>
+      </form>
+    </div>
   );
 };
 export default GetProfile;

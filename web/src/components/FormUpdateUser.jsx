@@ -46,98 +46,114 @@ const FormUpdateUser = () => {
   });
 
   return (
-    <form className='form__update' onSubmit={updateSubmit}>
-      <div className='form__update__input'>
-        <label htmlFor='email'>E-mail</label>
-        <input
-          type='email'
-          name='email'
-          id='email'
-          placeholder='user@email.com'
-          autoComplete='true'
-          {...register('email', {
-            pattern: {
-              value: /^[\w.]+@([\w-]+\.)+[\w-]{2,4}$/,
-              message: 'E-mail is not valid',
-            },
-            maxLength: {
-              value: 100,
-              message: `This field should be less than 100 characters`,
-            },
-          })}
-        />
-        {errors.email && <p>{errors.email?.message}</p>}
-      </div>
-      <div className='form__update__input'>
-        <label htmlFor='password'>Password</label>
-        <input
-          type='password'
-          name='password'
-          id='password'
-          {...register('password', {
-            pattern: {
-              value:
-                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!¡%*¿?&])[A-Za-z\d@$!¡%*¿?&]{8,}$/,
-              message:
-                'Password needs to have minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character (@$!¡%*¿?&)',
-            },
-          })}
-        />
-        {errors.password && <p>{errors.password?.message}</p>}
-      </div>
-      <div className='form__update__input'>
-        <label htmlFor='username'>User name</label>
-        <input
-          type='text'
-          name='username'
-          id='username'
-          placeholder='Dua_Lipa99'
-          {...register('username', {
-            maxLength: {
-              value: 8,
-              message: `This field should be less than 8 characters`,
-            },
-            pattern: {
-              value: /^[a-zA-Z]+$/,
-              message: 'Only letters are allowed for this field.',
-            },
-          })}
-        />
-        {errors.username && <p>{errors.username?.message}</p>}
-      </div>
-      <div className='form__update__input'>
-        <label htmlFor='name'>Name</label>
-        <input
-          type='text'
-          name='name'
-          id='name'
-          placeholder='Dua'
-          {...register('name', {
-            pattern: {
-              value: /^[a-zA-Z]+$/,
-              message: 'Only letters are allowed for this field.',
-            },
-          })}
-        />
-      </div>
-      <div className='form__update__input'>
-        <label htmlFor='lastname'>Last name</label>
-        <input
-          type='text'
-          name='lastname'
-          id='lastname'
-          placeholder='Lipa'
-          {...register('lastname', {
-            pattern: {
-              value: /^[a-zA-Z]+$/,
-              message: 'Only letters are allowed for this field.',
-            },
-          })}
-        />
-      </div>
-      {updateStatus && <p>{updateStatus}</p>}
-      <FormButton type={'submit'} textValue={'Send'} />
-    </form>
+    <div className='flex flex-col items-center justify-center'>
+      <form className='w-4/5 p-3 bg-zinc-200' onSubmit={updateSubmit}>
+        <div className='flex flex-wrap -mx-3 mb-6'>
+          <div className='w-full md:w-1/2 px-3 mb-6 md:mb-0'>
+            <label htmlFor='email' className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>E-mail</label>
+            <input
+              className='appearance-none block w-full text-gray-700 py-2 px-4 mb-3 leading-tight'
+              type='email'
+              name='email'
+              id='email'
+              placeholder='user@email.com'
+              autoComplete='true'
+              {...register('email', {
+                pattern: {
+                  value: /^[\w.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                  message: 'E-mail is not valid',
+                },
+                maxLength: {
+                  value: 100,
+                  message: `This field should be less than 100 characters`,
+                },
+              })}
+            />
+            {errors.email && <p className='text-red-500 text-xs italic'>{errors.email?.message}</p>}
+          </div>
+          <div className='w-full md:w-1/2 px-3'>
+            <label htmlFor='username' className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>User name</label>
+            <input
+              type='text'
+              className='appearance-none block w-full text-gray-700 py-2 px-4 leading-tight'
+              name='username'
+              id='username'
+              placeholder='Dua_Lipa99'
+              {...register('username', {
+                maxLength: {
+                  value: 8,
+                  message: `This field should be less than 8 characters`,
+                },
+                pattern: {
+                  value: /^[a-zA-Z]+$/,
+                  message: 'Only letters are allowed for this field.',
+                },
+              })}
+            />
+            {errors.username && <p className='text-red-500 text-xs italic'>{errors.username?.message}</p>}
+          </div>
+        </div>
+        <div className='flex flex-wrap -mx-3 mb-6'>
+          <div className='w-full px-3'>
+            <label htmlFor='password' className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Password</label>
+            <input
+              type='password'
+              className='appearance-none block w-full text-gray-700 py-2 px-4 leading-tight'
+              name='password'
+              id='password'
+              {...register('password', {
+                pattern: {
+                  value:
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!¡%*¿?&])[A-Za-z\d@$!¡%*¿?&]{8,}$/,
+                  message:
+                    'Password needs to have minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character (@$!¡%*¿?&)',
+                },
+              })}
+            />
+            {errors.password && <p className='text-red-500 text-xs italic'>{errors.password?.message}</p>}
+          </div>
+        </div>
+
+        <div className='flex flex-wrap -mx-3 mb-6'>
+          <div className='w-full md:w-1/2 px-3 mb-6 md:mb-0'>
+            <label htmlFor='name' className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Name</label>
+            <input
+              type='text'
+              className='appearance-none block w-full text-gray-700 py-2 px-4 mb-3 leading-tight'
+              name='name'
+              id='name'
+              placeholder='Dua'
+              {...register('name', {
+                pattern: {
+                  value: /^[a-zA-Z]+$/,
+                  message: 'Only letters are allowed for this field.',
+                },
+              })}
+            />
+             {errors.name && <p className='text-red-500 text-xs italic'>{errors.name?.message}</p>}
+          </div>
+          <div className='w-full md:w-1/2 px-3'>
+            <label htmlFor='lastname' className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Last name</label>
+            <input
+              type='text'
+              className='appearance-none block w-full text-gray-700 py-2 px-4 leading-tight'
+              name='lastname'
+              id='lastname'
+              placeholder='Lipa'
+              {...register('lastname', {
+                pattern: {
+                  value: /^[a-zA-Z]+$/,
+                  message: 'Only letters are allowed for this field.',
+                },
+              })}
+            />
+            {errors.lastname && <p className='text-red-500 text-xs italic'>{errors.lastname?.message}</p>}
+          </div>
+        </div>
+        {updateStatus && <p className='mb-6'>{updateStatus}</p>}
+        <FormButton type={'submit'} textValue={'Send'} activeStyle='bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-100 mb-6'/>
+      </form>
+    </div>
   );
 };
 export default FormUpdateUser;

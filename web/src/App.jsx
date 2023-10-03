@@ -20,7 +20,7 @@ function App() {
     <LogInProvider>
       <ProfileProvider>
         <BrowserRouter>
-          <body className='h-screen'>
+          
             <Header />
             <main>
               <Routes>
@@ -38,7 +38,7 @@ function App() {
                 </Route>
               </Routes>
             </main>
-          </body>
+         
         </BrowserRouter>
       </ProfileProvider>
     </LogInProvider>

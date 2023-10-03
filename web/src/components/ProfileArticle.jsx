@@ -1,12 +1,14 @@
-const ProfileArticle =({user})=>{   
+import ButtonFunctional from './ButtonFunctional'; 
+const ProfileArticle =({user, handleDelete})=>{   
     return(        
-        <article>
-          <h3>User: {user.username}</h3>
-          <p>Email: {user.email}</p>
-          <p>Id: {user.id}</p>                 
-          <p>Role: {user.role}</p>        
-          {user.lastname && <p>Last Name: {user.lastname}</p>}
-          {user.name && <p>Name: {user.name}</p>}          
+        <article className='border border-gray-200 p-3 w-64 h-64 shadow flex flex-col justify-around'>
+          <h3 className='mb-2 text-lg font-bold text-transform: uppercase'>{user.username}</h3>
+          <p><span className='italic'>Email:</span> {user.email}</p>
+          <p><span className='italic'>Id:</span> {user.id}</p>                 
+          <p><span className='italic'>Role:</span> {user.role}</p>        
+          {user.lastname && <p><span className='italic'>Last Name:</span> {user.lastname}</p>}
+          {user.name && <p><span className='italic'>Name:</span> {user.name}</p>}  
+          <ButtonFunctional id={user.id} handleDelete={handleDelete} textValue='Delete'/>        
         </article>      
     )
 }

@@ -12,7 +12,7 @@ const Messages = () => {
   }, []);
 
   const handleDelete = (id) => {
-    const newArray = messages.filter((each) => each._id !== id);   
+    const newArray = messages.filter((each) => each._id !== id);
     deleteMessage(id);
     return setMessages(newArray);
   };
@@ -32,12 +32,14 @@ const Messages = () => {
   };
 
   return (
-    <>
-      <section>
-        <h2>Messages</h2>
-        <ul>{renderMsg()}</ul>
-      </section>
-    </>
+
+    <section className='flex flex-col justify-center items-center'>
+      <h2 className='mb-8 text-2xl'>Messages</h2>
+      <div className='w-11/12'>
+        <ul className='flex justify-start flex-wrap gap-6'>{renderMsg()}</ul>
+      </div>
+    </section>
+
   );
 };
 export default Messages;
