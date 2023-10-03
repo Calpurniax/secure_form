@@ -78,7 +78,9 @@ export const getProfiles = async (req, res) => {
 }
 
 export const updateUser = async (req, res) => {    
+    console.log(req.body)
     const id = req.params.id
+    console.log(id)
     if (!id) return res.status(400).json({ message: 'An id is required' })
     const { email, username, name, lastname, password } = req.body;
     if (!email && !username && !name && !lastname && !password) return res.status(400).json({ message: "New information is required" })

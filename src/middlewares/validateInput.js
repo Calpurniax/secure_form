@@ -27,6 +27,11 @@ export const validateLogin = async (req, res, next) => {
 }
 
 export const validateSecurePassword = async (req, res, next)=>{
-    const passwordOK = validator.isStrongPassword(req.body.password)
-    if(passwordOK) next()
+    if(req.body.password){
+        const passwordOK = validator.isStrongPassword(req.body.password)
+        if(passwordOK) next()
+        else return res.status(404).json({message:'password format invalid'})
+    }
+    else next()
+    
 }
