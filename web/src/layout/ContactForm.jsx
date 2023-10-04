@@ -9,6 +9,7 @@ import InputName from '../components/formComponents/InputName';
 import FormButton from '../components/FormButton';
 import HiddenInput from '../components/formComponents/HiddenInput';
 import Captcha from '../components/Captcha';
+import Hero from '../components/Hero';
 
 const ContactForm = () => {
   const [contactStatus, setContactStatus] = useState(null);
@@ -50,9 +51,11 @@ const ContactForm = () => {
   });
 
   return (
-    <section className='flex flex-col items-center justify-center'>
-      <h2 className='mb-6 text-xl'>Tell us what is on your mind</h2>
-      <form className='w-4/5 p-3 bg-zinc-200' onSubmit={onSubmit}>
+    <>
+    <Hero/>
+    <section className='flex flex-col items-center justify-center mt-6'>
+      <h2 className='mb-6 text-2xl'>Tell us what is on your mind</h2>
+      <form className='w-4/5 p-3 bg-zinc-200 mb-8' onSubmit={onSubmit}>
         <div className='flex flex-wrap -mx-3 mb-6'>
           <InputEmail
             cssStyle='w-full md:w-1/2 px-3 mb-6 md:mb-0'
@@ -144,6 +147,7 @@ const ContactForm = () => {
         </div>
       </form>
     </section>
+    </>
   );
 };
 export default ContactForm;

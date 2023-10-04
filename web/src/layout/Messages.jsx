@@ -36,7 +36,7 @@ const Messages = () => {
 
   return (
 
-    <section className='flex flex-col justify-center items-center'>
+    <section className='flex flex-col justify-center items-center mt-6'>
       <h2 className='mb-8 text-2xl'>Messages</h2>
       <div className='w-11/12'>
         <ul className='flex justify-start flex-wrap gap-6'>{renderMsg()}</ul>

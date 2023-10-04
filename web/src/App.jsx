@@ -24,9 +24,8 @@ function App() {
             <Header />
             <main>
               <Routes>
-                <Route path='/' element={<h1>Home</h1>} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/contact' element={<ContactForm />} />
+                <Route path='/' element={<ContactForm />} />
+                <Route path='/login' element={<Login />} />               
                 <Route element={<ProtectedRoute />}>
                   <Route path='/logout' element={<Logout />} />
                   <Route path='/messages' element={<Messages />} />

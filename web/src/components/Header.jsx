@@ -12,16 +12,14 @@ const Header = () => {
         </li>
     )}
     return (
-        <header className="w-full p-4 mb-5 shadow-md">
+        <header className="w-full p-4 shadow-md">
             <nav>
                 <ul className="flex flex-row justify-between">
                     <li>
                         <Link className="" to="/">Home</Link>
                     </li>                 
                     <div className="flex flex-row gap-6">
-                        <li>
-                            <Link className="" to="/contact">Contact</Link>
-                        </li>
+                        
                         {isLoggedIn && <li>
                             <Link className="" to="/messages">Messages</Link>
                         </li>}

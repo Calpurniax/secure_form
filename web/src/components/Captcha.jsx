@@ -35,9 +35,9 @@ class CaptchaTest extends Component {
             <div className="container">
                 <div className="form-group flex flex-col items-center">
 
-                    <div className="flex flex-row justify-end justify-items-end mt-3 gap-4">
+                    <div className="flex flex-row items-start mt-3 gap-4">
                         <LoadCanvasTemplate />
-                        <input className='w-36 h-auto' placeholder="Enter Captcha " id="user_captcha_input" name="user_captcha_input" type="text"></input>
+                        <input className='w-36 p-1 justify-self-start' placeholder="Enter Captcha " id="user_captcha_input" name="user_captcha_input" type="text"></input>
                             <span id='error'></span>
                     </div>
 
