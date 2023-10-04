@@ -7,7 +7,7 @@ const Logout = () => {
     logoutFunction(cookieToken);
   };
   return (
-    <div className='flex flex-row justify-center mt-6'>
+    <div className='h-screen flex items-center justify-center'>
        <button className='bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-100' onClick={handleClick}>Log Out</button>
     </div>
   )

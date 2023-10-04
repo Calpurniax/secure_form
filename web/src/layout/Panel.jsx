@@ -39,7 +39,7 @@ const Panel = () => {
         </ul>
         <section >{renderViews()}</section>
       </section>
-      <section className='ml-5'>
+      <section className='flex flex-col justify-center items-center mb-8'>
         {<AllUsers />}
       </section>
     </>

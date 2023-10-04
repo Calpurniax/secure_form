@@ -31,7 +31,7 @@ const Login = () => {
   }, [isLoggedIn]);
 
   return (
-    <div  className='flex flex-col items-center justify-center mt-6'>
+    <div  className='h-screen flex flex-col items-center justify-center mt-6'>
       <form className='flex flex-col items-center justify-center w-2/5 p-3 bg-zinc-200' onSubmit={onSubmit}>
         <InputEmail
           cssStyle='w-full px-3'
