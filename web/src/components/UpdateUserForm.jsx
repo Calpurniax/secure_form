@@ -46,7 +46,7 @@ const UpdateUserForm = () => {
   });
 
   return (
-    <div className='flex flex-col items-center justify-center'>
+    <div className='flex flex-col items-center justify-center mt-8'>
       <form className='w-4/5 p-3 bg-zinc-200' onSubmit={updateSubmit}>
         <div className='flex flex-wrap -mx-3 mb-6'>
           <div className='w-full md:w-1/2 px-3 mb-6 md:mb-0'>

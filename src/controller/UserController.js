@@ -50,7 +50,8 @@ export const getprofileById = async (req, res) => {
             username: userFound.username,
             name: userFound.name,
             lastname: userFound.lastname,
-            id:userFound._id
+            id:userFound._id,
+            role:userFound.role
         })
     }
     catch (error) {

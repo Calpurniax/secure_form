@@ -30,7 +30,7 @@ export const LogInProvider = ({ children }) => {
                 setLoading(false)
                 return
             }           
-            setIsLoggedIn(true)
+            setIsLoggedIn(true)            
             setUser(res.data)
             setLoading(false)
             if (res.data.role === "admin") setIsAdmin(true)

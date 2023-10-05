@@ -12,8 +12,10 @@ const EditProfileUser =()=>{
 
     return(
         <Layout>
-           <ProfileEdit handleClick={handleClick}/>
-           {updateProfile && <UpdateUserForm/>}
+           <div className='flex flex-col md:flex-row justify-center items-center md:justify-around mt-8'>
+               <ProfileEdit handleClick={handleClick}/>
+               {updateProfile && <UpdateUserForm/>}
+           </div>
         </Layout>
     )
 }

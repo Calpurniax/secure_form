@@ -1,6 +1,6 @@
 import DeleteButton from '../buttons/DeleteButton'
 
-const ProfileArticle =({user, handleDelete})=>{   
+const ProfileArticle =({user, handleDelete})=>{     
     return(        
         <article className='border border-gray-200 p-3 w-64 h-64 shadow flex flex-col justify-around'>
           <h3 className='mb-2 text-lg font-bold text-transform: uppercase'>{user.username}</h3>
