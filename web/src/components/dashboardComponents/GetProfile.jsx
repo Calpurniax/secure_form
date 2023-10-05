@@ -17,7 +17,7 @@ const GetProfile = () => {
     try {
       const res = await searchUser(id);
       if (res.status === 200) {
-        navigate(`/panel/${profile.id}`);
+        navigate(`/dashboard/${profile.id}`);
       }
     } catch (error) {
       console.log(error);
