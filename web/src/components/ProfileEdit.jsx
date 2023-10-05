@@ -1,20 +1,13 @@
+import { useEffect } from 'react';
 import { useProfileContext } from '../context/ProfileContext';
 import { useLoginContext } from '../context/LogInContext';
-import ProfileArticle from '../components/ProfileArticle';
-import { useState, useEffect } from 'react';
-import FormUpdateUser from '../components/FormUpdateUser';
+import ProfileArticle from './articles/ProfileArticle';
 
-const EditProfile=()=>{
+const ProfileEdit =({handleClick})=>{
 
     const { searchUser, profile, setProfile } = useProfileContext();
-    const { user, isAdmin } = useLoginContext();
-    const [updateProfile, setUpdateProfile] = useState(false);
+    const { user, isAdmin } = useLoginContext();  
    
-
-    const handleClick = () => {
-        setUpdateProfile(!updateProfile);
-      };
-
      useEffect(()=>{      
       async function callToProfile (){        
        try{
@@ -31,18 +24,16 @@ const EditProfile=()=>{
      },[])
 
     return(      
-        <div className='h-screen flex flex-col md:flex-row justify-center items-center md:justify-around'>
+        <section className='h-screen flex flex-col md:flex-row justify-center items-center md:justify-around'>
             <div className='flex flex-col justify-center items-center mt-6'>
               <h2 className='mb-8 text-2xl'>Your profile</h2>
               {profile && <ProfileArticle user={profile} />}
               <button id='update' className='bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-100 w-48 my-6' onClick={handleClick}>
             update
             </button>
-            </div>         
-           
-            {updateProfile&& <FormUpdateUser/>}
-      </div>
+            </div>       
+        </section>
     )
 
 }
-export default EditProfile
+export default ProfileEdit

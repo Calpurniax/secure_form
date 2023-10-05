@@ -1,4 +1,5 @@
-import ButtonFunctional from './ButtonFunctional'; 
+import DeleteButton from '../buttons/DeleteButton'
+
 const ProfileArticle =({user, handleDelete})=>{   
     return(        
         <article className='border border-gray-200 p-3 w-64 h-64 shadow flex flex-col justify-around'>
@@ -8,7 +9,7 @@ const ProfileArticle =({user, handleDelete})=>{
           <p><span className='italic'>Role:</span> {user.role}</p>        
           {user.lastname && <p><span className='italic'>Last Name:</span> {user.lastname}</p>}
           {user.name && <p><span className='italic'>Name:</span> {user.name}</p>}  
-          <ButtonFunctional id={user.id} handleDelete={handleDelete} textValue='Delete'/>        
+          <DeleteButton id={user.id} handleDelete={handleDelete} textValue='Delete'/>        
         </article>      
     )
 }

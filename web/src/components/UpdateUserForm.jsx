@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import FormButton from './FormButton.jsx';
-import { useProfileContext } from '../context/ProfileContext.jsx';
 import { useParams } from 'react-router-dom';
+import { useProfileContext } from '../context/ProfileContext.jsx';
+import FormButton from './buttons/FormButton.jsx';
 
-const FormUpdateUser = () => {
+const UpdateUserForm = () => {
   const [updateStatus, setUpdateStatus] = useState(null);
   const params = useParams();
   const { profile, updateUser, searchUser, setProfile } = useProfileContext();
@@ -156,4 +156,4 @@ const FormUpdateUser = () => {
     </div>
   );
 };
-export default FormUpdateUser;
+export default UpdateUserForm;

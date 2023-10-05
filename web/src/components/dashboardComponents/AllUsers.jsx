@@ -1,16 +1,15 @@
-import ProfileArticle from '../ProfileArticle';
-import { getUsers } from '../../services/profileEndpoints';
 import { useState, useEffect } from 'react';
 import { useProfileContext } from '../../context/ProfileContext';
+import { getUsers } from '../../services/profileEndpoints';
+import ProfileArticle from '../articles/ProfileArticle';
 
-const AllUsers = () => {  
-   
+const AllUsers = () => {
   const [allUsers, setAllUsers] = useState([]);
   const { deleteUser } = useProfileContext();
 
   useEffect(() => {
     getUsers().then((response) => {
-      setAllUsers(response);     
+      setAllUsers(response);
     });
   }, []);
 
@@ -35,12 +34,16 @@ const AllUsers = () => {
   };
 
   return (
-    <div className='flex flex-col justify-center items-center'>
-      <h2 className='my-6 text-2xl'>Users</h2>
-      <div className='w-11/12'>
-        <ul className='flex justify-start flex-wrap gap-6'>{renderUsers()}</ul>
+    <section className='flex flex-col justify-center items-center mb-8'>
+      <div className='flex flex-col justify-center items-center'>
+        <h2 className='my-6 text-2xl'>Users</h2>
+        <div className='w-11/12'>
+          <ul className='flex justify-start flex-wrap gap-6'>
+            {renderUsers()}
+          </ul>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 export default AllUsers;

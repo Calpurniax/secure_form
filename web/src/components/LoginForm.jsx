@@ -3,11 +3,11 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLoginContext } from '../context/LogInContext';
 import { useProfileContext } from '../context/ProfileContext';
-import InputEmail from "../components/formComponents/InputEmail";
-import InputPassword from '../components/formComponents/InputPassword';
-import FormButton from '../components/FormButton';
+import InputEmail from "./inputs/InputEmail";
+import InputPassword from './inputs/InputPassword';
+import FormButton from './buttons/FormButton';
 
-const Login = () => {
+const LoginForm = () => {
   
   const navigate = useNavigate();
 
@@ -59,4 +59,4 @@ const Login = () => {
     </div>
   );
 };
-export default Login;
+export default LoginForm;

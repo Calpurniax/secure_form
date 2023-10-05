@@ -1,16 +1,10 @@
 import { useState } from 'react';
+import FormNewUser from './FormNewUser';
+import GetProfile from './GetProfile';
 
-import FormNewUser from '../components/panelComponents/FormNewUser';
-import GetProfile from '../components/panelComponents/GetProfile';
-import AllUsers from '../components/panelComponents/AllUsers';
-
-
-const Panel = () => {
+const DashboardSelector = () => {
   const [renderCreate, setRenderCreate] = useState(false);
-  const [renderSearch, setRenderSearch] = useState(false);
-
-
-  
+  const [renderSearch, setRenderSearch] = useState(false);  
 
   const handleViews = (ev) => {
     const id = ev.target.id;
@@ -30,19 +24,14 @@ const Panel = () => {
       return <GetProfile />;      
     }
   };
-  return (
-    <>
+  return (   
       <section className='mt-12'>
         <ul onClick={handleViews} className='flex flex-row justify-around my-8'>
           <li className='hover:cursor-pointer bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-100 w-1/4 mb-6' id='create'>Create user</li>
           <li className='hover:cursor-pointer bg-amber-500 text-white font-bold py-2 px-4 rounded opacity-100 w-1/4 mb-6' id='search'>Search user for update</li>
         </ul>
         <section >{renderViews()}</section>
-      </section>
-      <section className='flex flex-col justify-center items-center mb-8'>
-        {<AllUsers />}
-      </section>
-    </>
+      </section>   
   );
 };
-export default Panel;
+export default DashboardSelector;

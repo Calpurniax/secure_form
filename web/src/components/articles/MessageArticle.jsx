@@ -1,4 +1,4 @@
-import ButtonFunctional from './ButtonFunctional'
+import DeleteButton from '../buttons/DeleteButton'
 
 const MessageArticle =({eachMessage, handleDelete})=>{
   
@@ -10,7 +10,7 @@ const MessageArticle =({eachMessage, handleDelete})=>{
                 <p><span className='italic'>Contact:</span> {eachMessage.email}</p>
                 <p> <span className='italic'>Mensaje:</span></p>
                 <p className='mb-4'>{eachMessage.message}</p>
-                <ButtonFunctional id={eachMessage._id} handleDelete={handleDelete} textValue={'Delete'}/>
+                <DeleteButton id={eachMessage._id} handleDelete={handleDelete} textValue={'Delete'}/>
             </article>
         </li>
     )

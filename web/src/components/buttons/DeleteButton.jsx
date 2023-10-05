@@ -1,4 +1,4 @@
-const FormButton =({type, textValue, id, handleDelete})=>{
+const DeleteButton =({type, textValue, id, handleDelete})=>{
     
     const handleClick=(ev)=>{       
         const id= (ev.target.id)
@@ -11,4 +11,4 @@ const FormButton =({type, textValue, id, handleDelete})=>{
     )
 }
 
-export default FormButton
+export default DeleteButton

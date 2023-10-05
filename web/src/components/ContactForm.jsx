@@ -3,13 +3,12 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { contactSchema } from '../schemas/formSchema';
 import { sendMessage } from '../services/msgEndpoints';
-import InputEmail from '../components/formComponents/InputEmail';
-import InputText from '../components/formComponents/InputText';
-import InputName from '../components/formComponents/InputName';
-import FormButton from '../components/FormButton';
-import HiddenInput from '../components/formComponents/HiddenInput';
-import Captcha from '../components/Captcha';
-import Hero from '../components/Hero';
+import InputEmail from './inputs/InputEmail';
+import InputText from './inputs/InputText';
+import InputName from './inputs/InputName';
+import FormButton from './buttons/FormButton';
+import HiddenInput from './inputs/HiddenInput';
+import Captcha from './Captcha';
 
 const ContactForm = () => {
   const [contactStatus, setContactStatus] = useState(null);
@@ -50,9 +49,7 @@ const ContactForm = () => {
     }
   });
 
-  return (
-    <>
-    <Hero/>
+  return (  
     <section className='flex flex-col items-center justify-center mt-6'>
       <h2 className='mb-6 text-2xl'>Tell us what is on your mind</h2>
       <form className='w-4/5 p-3 bg-zinc-200 mb-8' onSubmit={onSubmit}>
@@ -147,7 +144,7 @@ const ContactForm = () => {
         </div>
       </form>
     </section>
-    </>
+    
   );
 };
 export default ContactForm;

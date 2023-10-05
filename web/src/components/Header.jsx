@@ -24,7 +24,7 @@ const Header = () => {
                             <Link className="" to="/messages">Messages</Link>
                         </li>}
                         {isAdmin && <li>
-                            <Link className="" to="/panel" >Panel </Link>
+                            <Link className="" to="/dashboard" >Dashboard </Link>
                         </li>}
                         { isLoggedIn ?
                         <li>

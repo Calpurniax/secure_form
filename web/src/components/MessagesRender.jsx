@@ -1,8 +1,8 @@
-import { getMessages, deleteMessage } from '../services/msgEndpoints';
 import { useEffect, useState } from 'react';
-import MessageArticle from '../components/MessageArticle';
+import { getMessages, deleteMessage } from '../services/msgEndpoints';
+import MessageArticle from './articles/MessageArticle';
 
-const Messages = () => {
+const MessagesRender = () => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -45,4 +45,4 @@ const Messages = () => {
 
   );
 };
-export default Messages;
+export default MessagesRender;

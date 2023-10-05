@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import InputText from '../formComponents/InputText.jsx';
-import InputEmail from '../formComponents/InputEmail.jsx';
-import InputPassword from '../formComponents/InputPassword.jsx';
-import FormButton from '../FormButton.jsx';
 import { registerUser } from '../../services/profileEndpoints';
+import InputText from '../inputs/InputText.jsx';
+import InputEmail from '../inputs/InputEmail.jsx';
+import InputPassword from '../inputs/InputPassword.jsx';
+import FormButton from '../buttons/FormButton.jsx';
+
 
 const FormNewUser = () => {
   const [registerStatus, setRegisterStatus] = useState(null);

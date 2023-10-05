@@ -1,7 +1,7 @@
-import FormButton from '../FormButton';
 import { useForm } from 'react-hook-form';
-import { useProfileContext } from '../../context/ProfileContext';
 import { useNavigate } from 'react-router-dom';
+import { useProfileContext } from '../../context/ProfileContext';
+import FormButton from '../buttons/FormButton';
 
 const GetProfile = () => {
   const { searchUser, profile } = useProfileContext();
