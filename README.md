@@ -9,6 +9,8 @@ In the back-end side we have one MongoDB database with two collections, one for 
 - Users can be created only by the administrator, and for their names and user's names only letters are allowed (to avoid XSS or SQL injection)
 - User's password has to be a secure one (minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character) and is always cypher and will never returned to the client side
 - Messages are filter by a yup schema, to prevent XSS or SQL injection
+
+  
 Furthermore a middleware checks all inputs thanks to the validator library, sanitizing and checking the passwords and emails format.
 
 
