@@ -9,7 +9,7 @@ const InputEmail =({ cssStyle, labelStyle, inputStyle, errorStyle, labelText, id
                 },
                 pattern:{
                     value:/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                    message:"e-mail address is not valid"
+                    message:"E-mail address is not valid"
                 },
                 maxLength:{
                     value:100,
