@@ -16,11 +16,9 @@ import FormUpdateUser from './components/FormUpdateUser';
 function App() {
 
   return (
-
     <LogInProvider>
       <ProfileProvider>
-        <BrowserRouter>
-          
+        <BrowserRouter>          
             <Header />
             <main>
               <Routes>
@@ -36,8 +34,7 @@ function App() {
                   </Route>
                 </Route>
               </Routes>
-            </main>
-         
+            </main>         
         </BrowserRouter>
       </ProfileProvider>
     </LogInProvider>
