@@ -61,8 +61,10 @@ npm install
 ```
 npm run dev
 ```
-7. Run the client in a new terminal
+7. Open a new terminal and run the client
 ```
 cd web
 npm run dev
 ```
+8. Open your browser and check the project in http://localhost:5173/
+9. Enjoy and give me some feedback!
