@@ -1,4 +1,4 @@
-# secure_form
+# Secure Form Project
 In this project I wanted to create a contact form without OWASP vulnerabilities. There is also a login for users, so they can read all the messages that our visitors sent, and a administrator dashboard to manage the users.
 
 I get the hero image from  [Andrew Ridley](https://unsplash.com/es/@aridley88?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) in [Unsplash](https://unsplash.com/es/fotos/jR4Zf-riEjI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
