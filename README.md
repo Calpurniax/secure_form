@@ -21,25 +21,25 @@ Here is a list of features I have implemented:
 -  Max lenght for the inputs
 -  Validate the inputs to prevent XSS (regular expressions, avoid innerHTML)
 #### Control Panel
-- [x] 2 types of user (admin and user)
-- [x] Admin Route to the control panel
-- [x] Admin can CRUD the users
-- [x] Users can check only the messages and change their own profile
-- [x] Use protected Routes
-- [x] Implement Auth Context
+-  2 types of user (admin and user)
+-  Admin Route to the control panel
+-  Admin can CRUD the users
+-  Users can check only the messages and change their own profile
+-  Use protected Routes
+-  Implement Auth Context
 
 ### Back-end
 #### Contact form
-- [x] Route and controller for saving the contact form data
-- [x] ORM for the DB (mongoose)
-- [x] Apply filters against XSS and SQLinjection (validatorjs, CSP configuration)
-- [x] Validate hidden inputs are empty (return error 500)
-- [x] Implement middleware to restrict number of calls (express-rate-limit)
+-  Route and controller for saving the contact form data
+-  ORM for the DB (mongoose)
+-  Apply filters against XSS and SQLinjection (validatorjs, CSP configuration)
+-  Validate hidden inputs are empty (return error 500)
+-  Implement middleware to restrict number of calls (express-rate-limit)
 #### Users
-- [x] Token with encript user id and role, with expire date
-- [x] Admin is unique and generate only in DB
-- [x] Validate (with a middleware) the rol admin for manage Users
-- [x] Validate the user has user rol to check the messages or update his profile
-- [x] All users has id, name and lastname, rol, email  and username
-- [x] Use hash for cypher the passwords
-- [x] Apply middleware against brute force attack on login (express-rate-limit)
+-  Token with encript user id and role, with expire date
+-  Admin is unique and generate only in DB
+-  Validate (with a middleware) the rol admin for manage Users
+-  Validate the user has user rol to check the messages or update his profile
+-  All users has id, name and lastname, rol, email  and username
+-  Use hash for cypher the passwords
+-  Apply middleware against brute force attack on login (express-rate-limit)
