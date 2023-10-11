@@ -46,7 +46,23 @@ Here is a list of features I have implemented:
 
 ## Installation and configuration
 
-To run this project, make sure you have vite and node and npm installed. Then clone this repository
+1. To run this project, make sure you have vite and node and npm installed. Then clone this repository
 ```
 git clone https://github.com/Calpurniax/secure_form.git
+```
+2. Install all dependencies for the back-end, with your terminal in the project folder write:
+```
+npm install
+```
+3. Switch to web folder, that's the front-end, and install the dependencies with the same "npm install"
+4. Configure database config at src/db/db.js and run MongoDB
+5. Create your personal secret key for the token in a .env.js file, inside the src folder
+6. Run the server by writing this command in your terminal (in the root folder of the project)
+```
+npm run dev
+```
+7. Run the client in a new terminal
+```
+cd web
+npm run dev
 ```
