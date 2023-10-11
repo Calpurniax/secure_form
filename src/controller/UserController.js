@@ -1,10 +1,10 @@
 import User from '../models/UserModel.js';
-import bcrypt from 'bcryptjs';
 
 
 //con bcrypt se puede encriptar la secret key del token y asi que sea más dificil desincriptar
 
 export const createUser = async (req, res) => {
+    console.log(req.body)
     const { email, username, name, lastname, password } = req.body
     if (!email || !username || !password || !name || !lastname) {
         return res.status(400).json({
@@ -13,14 +13,13 @@ export const createUser = async (req, res) => {
 
     } const userExists = await User.findOne({ email })
     if (userExists) return res.status(400).json({ message: 'user already exists' })
-    try {
-        const scriptPassword = await bcrypt.hash(password, 10);
+    try {       
         const newUser = new User({
             email,
             username,
             name,
             lastname,
-            password: scriptPassword,
+            password,
             role: 'user'
         })
         await newUser.save()
@@ -32,6 +31,7 @@ export const createUser = async (req, res) => {
             lastname
         })
     } catch (error) {
+        console.log(error)
         res.status(400).json({
             message: error.message
         })
@@ -80,15 +80,10 @@ export const getProfiles = async (req, res) => {
 
 export const updateUser = async (req, res) => {    
     console.log(req.body)
-    const id = req.params.id
-    console.log(id)
+    const id = req.params.id    
     if (!id) return res.status(400).json({ message: 'An id is required' })
     const { email, username, name, lastname, password } = req.body;
-    if (!email && !username && !name && !lastname && !password) return res.status(400).json({ message: "New information is required" })
-    if (password) {
-        const scriptPassword = await bcrypt.hash(password, 10)
-        req.body.password = scriptPassword
-    }
+    if (!email && !username && !name && !lastname && !password) return res.status(400).json({ message: "New information is required" })   
     try {
         const userFound = await User.findOneAndUpdate(
             { _id: id },

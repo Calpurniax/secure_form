@@ -51,7 +51,7 @@ const FormNewUser = () => {
             id='register_username'
             register={register}
             errors={errors}
-            placeholder='Dua_Lipa99'
+            placeholder='RadiaP'
           />
         </div>
         <div className='flex flex-wrap -mx-3 mb-6'>
@@ -76,7 +76,7 @@ const FormNewUser = () => {
             id='register_name'
             register={register}
             errors={errors}
-            placeholder='Dua'
+            placeholder='Radia'
           />
 
           <InputText
@@ -88,7 +88,7 @@ const FormNewUser = () => {
             id={'register_lastname'}
             register={register}
             errors={errors}
-            placeholder='Lipa'
+            placeholder='Perlman'
           />
         </div>
         {registerStatus && <p>{registerStatus}</p>}

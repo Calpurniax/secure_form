@@ -73,7 +73,7 @@ const ContactForm = () => {
             id='contact_name'
             register={register}
             errors={errors}
-            placeholder='Dua Lipa'
+            placeholder='Radia Perlman'
           />
         </div>
         <div className='flex flex-wrap -mx-3 mb-6'>
