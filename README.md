@@ -4,7 +4,7 @@ In this project I wanted to create a contact form without OWASP vulnerabilities.
 I get the hero image from  [Andrew Ridley](https://unsplash.com/es/@aridley88?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) in [Unsplash](https://unsplash.com/es/fotos/jR4Zf-riEjI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
 ## About the project
-This a full-stack MERN development, the front-end include features to secure the contact form against XSS or DoS attacks (validate the inputs, avoiding "InnerHTML" and implementing a captcha) There are also 2 hidden inputs, when those are filled, both the front-end and the back-end don't allow the message to be saved in the DB.
+This a full-stack MERN development, I also chose to go with tailwindCSS. As long as the features, the front-end includes some measures to secure the contact form against XSS or DoS attacks (validate the inputs, avoiding "InnerHTML" and implementing a captcha) There are also 2 hidden inputs, when those are filled, both the front-end and the back-end don't allow the message to be saved in the DB.
 In the back-end side we have one MongoDB database with two collections, one for users and one for messages. 
 - Users can be created only by the administrator, and for their names and user's names only letters are allowed (to avoid XSS or SQL injection)
 - User's password has to be a secure one (minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character) and is always cypher and will never returned to the client side
@@ -43,3 +43,5 @@ Here is a list of features I have implemented:
 -  All users has id, name and lastname, rol, email  and username
 -  Use hash for cypher the passwords
 -  Apply middleware against brute force attack on login (express-rate-limit)
+
+## Installation and configuration
