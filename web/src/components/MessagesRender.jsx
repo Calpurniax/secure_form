@@ -15,7 +15,7 @@ const MessagesRender = () => {
   const handleDelete = async (id) => {    
     const newArray = messages.filter((each) => each._id !== id);
     const response = await deleteMessage(id);
-    if(response.status===200){
+    if(response.status===204){
       setMessages(newArray);
     }    
   };

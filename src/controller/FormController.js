@@ -51,7 +51,7 @@ export const deleteMessage = async (req, res) => {
         const id = req.params.id
         const messageFound = await ContactForm.findByIdAndDelete({ _id: id })
         if (!messageFound) res.status(404).json({ message: 'No message found' })
-        res.status(200).json({ message: 'Form deleted' })
+        res.status(204).json({ message: 'Form deleted' })
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

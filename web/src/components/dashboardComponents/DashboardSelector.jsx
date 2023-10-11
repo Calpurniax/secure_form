@@ -2,7 +2,7 @@ import { useState } from 'react';
 import FormNewUser from './FormNewUser';
 import GetProfile from './GetProfile';
 
-const DashboardSelector = () => {
+const DashboardSelector = ({setAllUsers, allUsers}) => {
   const [renderCreate, setRenderCreate] = useState(false);
   const [renderSearch, setRenderSearch] = useState(false);  
 
@@ -19,7 +19,7 @@ const DashboardSelector = () => {
 
   const renderViews = () => {
     if (renderCreate) {
-      return <FormNewUser />;
+      return <FormNewUser setAllUsers={setAllUsers}allUsers={allUsers} />;
     } else if (renderSearch) {
       return <GetProfile />;      
     }

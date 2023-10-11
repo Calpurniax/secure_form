@@ -1,25 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useProfileContext } from '../../context/ProfileContext';
-import { getUsers } from '../../services/profileEndpoints';
 import ProfileArticle from '../articles/ProfileArticle';
-
-const AllUsers = () => {
-  const [allUsers, setAllUsers] = useState([]);
-  const { deleteUser } = useProfileContext();
-
-  useEffect(() => {
-    getUsers().then((response) => {
-      setAllUsers(response);
-    });
-  }, []);
-
-  const handleDelete = async (id) => {
-    const newArray = allUsers.filter((each) => each._id !== id);
-    const response = await deleteUser(id);
-    if (response.status === 200) {
-      setAllUsers(newArray);
-    }
-  };
+const AllUsers = ({allUsers, handleDelete}) => {  
 
   const renderUsers = () => {
     if (allUsers.length > 0) {

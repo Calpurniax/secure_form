@@ -7,7 +7,8 @@ import InputPassword from '../inputs/InputPassword.jsx';
 import FormButton from '../buttons/FormButton.jsx';
 
 
-const FormNewUser = () => {
+
+const FormNewUser = ({setAllUsers, allUsers}) => {
   const [registerStatus, setRegisterStatus] = useState(null);
   const {
     register,
@@ -17,9 +18,19 @@ const FormNewUser = () => {
   } = useForm();
 
   const onSubmit = handleSubmit(async (values) => {
+    console.log(values)
     try {
       const res = await registerUser(values);
       if (res.status === 201) {
+        //window.location.reload(false)
+        //Router.refresh()
+        // const newUser={
+        //   email:values.register_email,
+        //   lastname:values.register_lastname,
+        //   name:values.register_name,
+        //   username:values.register_username
+        // }
+        //setAllUsers(...allUsers)
         reset();
         setRegisterStatus('Register was successful');
       }
