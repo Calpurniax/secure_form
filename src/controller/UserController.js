@@ -85,11 +85,10 @@ export const updateUser = async (req, res) => {
     const { email, username, name, lastname, password } = req.body;
     if (!email && !username && !name && !lastname && !password) return res.status(400).json({ message: "New information is required" })   
     try {
-        const userFound = await User.findOneAndUpdate(
+        await User.findOneAndUpdate(
             { _id: id },
             req.body,
-            { new: true })
-        if (!userFound) res.status(404).json({ message: 'User not found' })
+            { new: true })        
         res.status(200).json({ message: 'Update correct' })
 
     } catch (error) {
