@@ -45,3 +45,8 @@ Here is a list of features I have implemented:
 -  Apply middleware against brute force attack on login (express-rate-limit)
 
 ## Installation and configuration
+
+To run this project, make sure you have vite and node and npm installed. Then clone this repository
+```
+git clone https://github.com/Calpurniax/secure_form.git
+```
